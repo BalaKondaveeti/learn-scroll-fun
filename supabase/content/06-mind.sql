@@ -3,7 +3,7 @@
 begin;
 
 insert into public.ls_chapters (slug, title, description, emoji, color, sort_order)
-values ('mind', 'Mind', 'Old philosophy and simple practices for a steadier head.', '🧘', '#14b8a6', 6)
+values ('mind', 'Mind', 'Old philosophy and simple practices for a steadier head.', '🧘', '#06b6d4', 6)
 on conflict (slug) do update set title = excluded.title, description = excluded.description,
   emoji = excluded.emoji, color = excluded.color, sort_order = excluded.sort_order;
 

@@ -3,7 +3,7 @@
 begin;
 
 insert into public.ls_chapters (slug, title, description, emoji, color, sort_order)
-values ('tech-and-ai-career', 'Tech and AI Career', 'How LLMs work, system design basics and getting ready for big-tech interviews.', '💻', '#ec4899', 7)
+values ('tech-and-ai-career', 'Tech and AI Career', 'How LLMs work, system design basics and getting ready for big-tech interviews.', '💻', '#d946ef', 7)
 on conflict (slug) do update set title = excluded.title, description = excluded.description,
   emoji = excluded.emoji, color = excluded.color, sort_order = excluded.sort_order;
 
