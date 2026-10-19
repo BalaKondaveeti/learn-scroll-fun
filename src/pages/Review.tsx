@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import { BackButton, ErrorNotice, Page, Spinner } from '../components/Bits'
+import { ErrorNotice, IconLink, Spinner } from '../components/Bits'
 import { Quiz } from '../components/Quiz'
 import { useUserId } from '../lib/authContext'
+import { deep } from '../lib/color'
 import { getReviewQuestions, logAttempt } from '../lib/data'
 import { useAsync } from '../lib/useAsync'
 
@@ -10,34 +11,26 @@ export default function Review() {
   const userId = useUserId()
   const navigate = useNavigate()
   const { data, error, reload } = useAsync(() => getReviewQuestions(10), [])
-  const color = '#f59e0b'
 
   return (
-    <Page>
-      <header className="flex items-center gap-3 px-5 pt-4">
-        <BackButton to="/" />
-        <h1 className="font-display text-2xl font-bold">Review</h1>
-      </header>
-      {error && <ErrorNotice error={error} onRetry={reload} />}
-      {!data && !error && <Spinner />}
-      {data && data.length === 0 && (
-        <p className="px-5 pt-10 text-lg text-[var(--muted)]">Nothing to review. Missed questions will show up here after a quiz.</p>
-      )}
-      {data && data.length > 0 && (
-        <div className="px-5 pt-6 pb-10">
-          <p className="mb-5 text-[var(--muted)]">A mix of questions you got wrong before.</p>
-          <div className="rounded-[30px] border border-[var(--line)] bg-[var(--surface)] p-6">
-            <Quiz
-              questions={data}
-              color={color}
-              onAnswer={(q, correct) => void logAttempt(userId, q.id, correct).catch(() => {})}
-              onFinish={() => {}}
-              onExit={() => navigate('/')}
-              exitLabel="Back home"
-            />
+    <div className="fixed inset-0 overflow-y-auto text-white" style={{ background: deep('#f43f5e') }}>
+      <div className="pt-safe pb-safe mx-auto flex min-h-full max-w-xl flex-col px-5">
+        <header className="flex items-center gap-3 pt-3">
+          <IconLink to="/" label="Back" />
+          <div className="leading-tight">
+            <p className="text-[17px] font-semibold">Review</p>
+            <p className="text-[13px] text-white/75">Questions you missed before</p>
           </div>
+        </header>
+        <div className="flex flex-1 items-center py-8">
+          {error && <ErrorNotice error={error} onRetry={reload} />}
+          {!data && !error && <div className="w-full"><Spinner light /></div>}
+          {data && data.length === 0 && <p className="w-full text-center text-[19px] text-white/85">Nothing to review. Missed questions show up here after a quiz.</p>}
+          {data && data.length > 0 && (
+            <Quiz questions={data} onAnswer={(q, correct) => void logAttempt(userId, q.id, correct).catch(() => {})} onFinish={() => {}} onExit={() => navigate('/')} exitLabel="Back home" />
+          )}
         </div>
-      )}
-    </Page>
+      </div>
+    </div>
   )
 }

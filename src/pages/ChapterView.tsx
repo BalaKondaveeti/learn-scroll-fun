@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
-import { BackButton, ErrorNotice, Page, Spinner } from '../components/Bits'
+import { ErrorNotice, IconLink, Page, Spinner } from '../components/Bits'
 import { PartTile } from '../components/PartTile'
 import { ProgressRing } from '../components/ProgressRing'
-import { glow } from '../lib/color'
+import { vivid } from '../lib/color'
 import { getChapter, getParts, getProgress } from '../lib/data'
 import type { Part } from '../lib/types'
 import { useAsync } from '../lib/useAsync'
@@ -40,28 +40,27 @@ export default function ChapterView() {
 
   const node = progress.get(current?.id ?? chapter.id)
   const heading = current ?? chapter
+  const variant = current ? current.sort_order + 1 : 0
 
   return (
     <Page>
-      <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[60dvh]" style={{ background: glow(chapter.color) }} />
-      <header className="sticky top-0 z-10 flex items-center justify-between px-5 pt-4 pb-2">
-        <BackButton to={backTo} />
-        <ProgressRing value={node?.progress ?? 0} color={chapter.color} size={40} />
-      </header>
-      <section className="px-5 pt-4 pb-6">
-        <span className="text-5xl" aria-hidden>{heading.emoji}</span>
-        {current && <p className="mt-4 text-[15px] text-[var(--muted)]">{parent ? parent.title : chapter.title}</p>}
-        <h1 className={`font-display text-[38px] leading-[1.02] font-extrabold tracking-tight ${current ? 'mt-1' : 'mt-4'}`}>{heading.title}</h1>
-        {heading.description && <p className="mt-3 text-lg leading-snug text-[var(--muted)]">{heading.description}</p>}
-        {node && node.leaf_total > 0 && (
-          <p className="mt-3 text-sm text-[var(--muted)]">
-            {node.leaf_done} of {node.leaf_total} parts finished
-          </p>
-        )}
+      <section className="pt-safe relative overflow-hidden text-white" style={{ background: vivid(chapter.color, variant) }}>
+        <div aria-hidden className="scrim absolute inset-0" />
+        <div className="relative px-4 pt-3 pb-7">
+          <div className="flex items-center justify-between">
+            <IconLink to={backTo} label="Back" />
+            <ProgressRing value={node?.progress ?? 0} size={42} />
+          </div>
+          <span className="mt-8 block text-[56px] leading-none" aria-hidden>{heading.emoji}</span>
+          {current && <p className="mt-4 text-[15px] font-semibold text-white/80">{parent ? parent.title : chapter.title}</p>}
+          <h1 className={`font-display text-[40px] leading-[1] font-extrabold tracking-[-0.035em] text-balance ${current ? 'mt-1' : 'mt-5'}`}>{heading.title}</h1>
+          {heading.description && <p className="mt-3 text-[17px] leading-snug text-white/88">{heading.description}</p>}
+          {node && node.leaf_total > 0 && <p className="mt-4 text-[14px] font-medium text-white/75">{node.leaf_done} of {node.leaf_total} finished</p>}
+        </div>
       </section>
-      <div className="flex flex-col gap-3 px-5 pb-12">
-        {children.map((p) => (
-          <PartTile key={p.id} part={p} to={partPath(p)} color={chapter.color} node={progress.get(p.id)} childCount={childrenOf(p.id).length} />
+      <div className="flex flex-col gap-1 px-2 pt-3 pb-12">
+        {children.map((p, i) => (
+          <PartTile key={p.id} part={p} to={partPath(p)} color={chapter.color} variant={i} node={progress.get(p.id)} childCount={childrenOf(p.id).length} />
         ))}
       </div>
     </Page>

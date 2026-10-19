@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../lib/authContext'
+import { vivid } from '../lib/color'
 import { sb } from '../lib/supabase'
 
 type Mode = 'signin' | 'signup' | 'magic'
@@ -46,48 +47,42 @@ export default function Login() {
   }
 
   const field =
-    'w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3.5 text-[17px] outline-none focus:border-[var(--ink)]'
+    'w-full rounded-2xl bg-white/15 px-4 py-3.5 text-[17px] text-white placeholder:text-white/65 ring-1 ring-white/25 outline-none backdrop-blur-md focus:ring-2 focus:ring-white'
+  const link = 'font-semibold text-white/85 underline decoration-white/40 underline-offset-4'
 
   return (
-    <main className="pt-safe pb-safe relative mx-auto flex min-h-dvh w-full max-w-md flex-col justify-center overflow-hidden px-6">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[55dvh]" style={{ background: 'radial-gradient(90% 70% at 30% 0%, #ff8a6566 0%, transparent 60%), radial-gradient(80% 60% at 90% 10%, #7c6cff55 0%, transparent 65%)' }} />
-      <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-16 w-16 rounded-2xl" />
-      <h1 className="font-display mt-6 text-[44px] leading-[0.95] font-extrabold tracking-tight">
-        One idea
-        <br />
-        at a time.
-      </h1>
-      <p className="mt-3 text-lg text-[var(--muted)]">Short cards, then a quick quiz. Your progress follows you.</p>
+    <main className="pt-safe pb-safe fixed inset-0 overflow-y-auto text-white"
+      style={{ background: `${vivid('#ec4899', 0)}, ${vivid('#8b5cf6', 3)}`, backgroundSize: '200% 200%', animation: 'drift 14s ease-in-out infinite alternate' }}>
+      <div aria-hidden className="scrim pointer-events-none absolute inset-0" />
+      <div className="relative mx-auto flex min-h-full w-full max-w-md flex-col justify-end px-6 pt-16 pb-10">
+        <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-14 w-14 rounded-2xl shadow-lg" />
+        <h1 className="font-display mt-6 text-[48px] leading-[0.95] font-extrabold tracking-[-0.045em]">
+          One idea
+          <br />
+          at a time.
+        </h1>
+        <p className="mt-3 text-[18px] text-white/85">Swipe through short cards, then take a quick quiz.</p>
 
-      <form onSubmit={submit} className="mt-8 flex flex-col gap-3">
-        <input className={field} type="email" autoComplete="email" inputMode="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-        {mode !== 'magic' && (
-          <input
-            className={field}
-            type="password"
-            autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
-            placeholder="Password"
-            required
-            minLength={6}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <form onSubmit={submit} className="mt-8 flex flex-col gap-2.5">
+          <input className={field} type="email" autoComplete="email" inputMode="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+          {mode !== 'magic' && (
+            <input className={field} type="password" autoComplete={mode === 'signup' ? 'new-password' : 'current-password'} placeholder="Password" required minLength={6}
+              value={password} onChange={(e) => setPassword(e.target.value)} />
+          )}
+          <button disabled={busy} className="mt-1.5 rounded-full bg-white px-5 py-4 text-[17px] font-semibold text-black transition active:scale-[0.97] disabled:opacity-60">
+            {busy ? 'One moment…' : mode === 'signin' ? 'Sign in' : mode === 'signup' ? 'Create account' : 'Email me a link'}
+          </button>
+        </form>
+
+        {message && (
+          <p role="status" className={`mt-4 rounded-2xl px-4 py-3 text-[15px] ${message.kind === 'error' ? 'bg-rose-950/50' : 'bg-black/25'}`}>{message.text}</p>
         )}
-        <button disabled={busy} className="mt-1 rounded-2xl bg-[var(--ink)] px-5 py-4 text-lg font-bold text-[var(--bg)] transition active:scale-[0.98] disabled:opacity-60">
-          {busy ? 'One moment…' : mode === 'signin' ? 'Sign in' : mode === 'signup' ? 'Create account' : 'Email me a link'}
-        </button>
-      </form>
 
-      {message && (
-        <p role="status" className={`mt-4 text-[15px] ${message.kind === 'error' ? 'text-rose-400' : 'text-[var(--muted)]'}`}>
-          {message.text}
-        </p>
-      )}
-
-      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-[var(--muted)]">
-        {mode !== 'signin' && <button onClick={() => setMode('signin')} className="underline underline-offset-4">Sign in with password</button>}
-        {mode !== 'magic' && <button onClick={() => setMode('magic')} className="underline underline-offset-4">Email me a sign-in link</button>}
-        {mode !== 'signup' && <button onClick={() => setMode('signup')} className="underline underline-offset-4">Create an account</button>}
+        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[15px]">
+          {mode !== 'signin' && <button onClick={() => setMode('signin')} className={link}>Sign in with password</button>}
+          {mode !== 'magic' && <button onClick={() => setMode('magic')} className={link}>Email me a sign-in link</button>}
+          {mode !== 'signup' && <button onClick={() => setMode('signup')} className={link}>Create an account</button>}
+        </div>
       </div>
     </main>
   )
