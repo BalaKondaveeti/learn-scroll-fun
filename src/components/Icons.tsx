@@ -12,3 +12,5 @@ export const Moon = ({ size = 20 }: P) => <svg {...base(size)}><path d="M21 12.8
 export const LogOut = ({ size = 20 }: P) => <svg {...base(size)}><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" /></svg>
 export const Check = ({ size = 16 }: P) => <svg {...base(size)} strokeWidth={3}><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
 export const Repeat = ({ size = 22 }: P) => <svg {...base(size)}><path d="M17 2l4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" /></svg>
+export const ArrowsVertical = ({ size = 20 }: P) => <svg {...base(size)}><path d="M8 7l4-4 4 4M8 17l4 4 4-4M12 3v18" /></svg>
+export const ArrowsHorizontal = ({ size = 20 }: P) => <svg {...base(size)}><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18" /></svg>

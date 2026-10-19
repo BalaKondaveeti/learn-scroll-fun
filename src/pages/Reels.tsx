@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorNotice, IconLink, Spinner } from '../components/Bits'
-import { Book, ChevronUp, Play } from '../components/Icons'
+import { ArrowsHorizontal, ArrowsVertical, Book, ChevronUp, Play } from '../components/Icons'
 import { Markdown } from '../components/Markdown'
 import { Quiz } from '../components/Quiz'
 import { useUserId } from '../lib/authContext'
 import { deep, vivid } from '../lib/color'
 import { getCards, getPartProgress, getQuestions, logAttempt, saveCardPosition, saveQuizResult } from '../lib/data'
 import type { Card, CardKind, Chapter, Part, PartProgress } from '../lib/types'
+import { getScrollDirection, saveScrollDirection, type ScrollDirection } from '../lib/prefs'
 import { useAsync } from '../lib/useAsync'
 
 const KIND_LABEL: Record<CardKind, string> = {
@@ -31,6 +32,9 @@ export default function Reels({ chapter, part, backTo }: Props) {
   const [index, setIndex] = useState(0)
   const [progress, setProgress] = useState<PartProgress | null>(null)
   const [sheet, setSheet] = useState<Card | null>(null)
+  const [direction, setDirection] = useState<ScrollDirection>(getScrollDirection)
+  const horizontal = direction === 'horizontal'
+  const keepIndex = useRef<number | null>(null)
   const restored = useRef(false)
   const saveTimer = useRef<number | undefined>(undefined)
 
@@ -46,13 +50,24 @@ export default function Reels({ chapter, part, backTo }: Props) {
     setProgress(saved)
     const start = Math.min(saved?.last_card_index ?? 0, pages - 1)
     if (start > 0) {
-      requestAnimationFrame(() => {
-        const el = scroller.current?.children[start] as HTMLElement | undefined
-        el?.scrollIntoView({ behavior: 'instant' as ScrollBehavior })
-      })
+      requestAnimationFrame(() => scrollToPage(scroller.current, start, getScrollDirection()))
     }
     setIndex(start)
   }, [data, pages])
+
+  // Switching direction re-lays out the pages; jump back to the same card before the browser paints.
+  useLayoutEffect(() => {
+    if (keepIndex.current === null) return
+    scrollToPage(scroller.current, keepIndex.current, direction)
+    keepIndex.current = null
+  }, [direction])
+
+  function toggleDirection() {
+    keepIndex.current = index
+    const next: ScrollDirection = horizontal ? 'vertical' : 'horizontal'
+    saveScrollDirection(next)
+    setDirection(next)
+  }
 
   // Track which page is on screen.
   useEffect(() => {
@@ -92,6 +107,7 @@ export default function Reels({ chapter, part, backTo }: Props) {
   if (error) return <ErrorNotice error={error} onRetry={reload} />
 
   const onQuiz = data && index >= cards.length
+  const page = horizontal ? 'h-full w-full shrink-0' : 'h-full'
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-black text-white">
@@ -113,6 +129,13 @@ export default function Reels({ chapter, part, backTo }: Props) {
               <p className="truncate text-[15px] font-semibold">{part.title}</p>
               <p className="truncate text-[13px] text-white/75">{chapter.title}</p>
             </div>
+            <button
+              onClick={toggleDirection}
+              aria-label={horizontal ? 'Switch to vertical scrolling' : 'Switch to horizontal scrolling'}
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-black/25 text-white backdrop-blur-md transition active:scale-90"
+            >
+              {horizontal ? <ArrowsHorizontal /> : <ArrowsVertical />}
+            </button>
             <IconLink to={backTo} label="Close" icon="close" />
           </div>
         </div>
@@ -121,14 +144,17 @@ export default function Reels({ chapter, part, backTo }: Props) {
       {!data ? (
         <div className="grid h-full place-items-center" style={{ background: vivid(chapter.color) }}><Spinner light /></div>
       ) : (
-        <div ref={scroller} className="no-scrollbar h-full snap-y snap-mandatory overflow-y-auto overscroll-contain">
+        <div
+          ref={scroller}
+          className={`no-scrollbar h-full overscroll-contain ${horizontal ? 'flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden' : 'snap-y snap-mandatory overflow-y-auto'}`}
+        >
           {cards.map((card, i) => (
-            <section key={card.id} data-index={i} className="relative h-dvh snap-start snap-always" style={{ background: vivid(chapter.color, i) }}>
+            <section key={card.id} data-index={i} className={`relative snap-start snap-always ${page}`} style={{ background: vivid(chapter.color, i) }}>
               <div aria-hidden className="scrim absolute inset-0" />
               <CardView card={card} onDeeper={() => setSheet(card)} />
             </section>
           ))}
-          <section data-index={cards.length} className="relative h-dvh snap-start snap-always" style={{ background: deep(chapter.color) }}>
+          <section data-index={cards.length} className={`relative snap-start snap-always ${page}`} style={{ background: deep(chapter.color) }}>
             <div className="no-scrollbar relative mx-auto flex h-full max-w-xl items-center overflow-y-auto px-5 pt-[calc(env(safe-area-inset-top)+92px)] pb-[calc(env(safe-area-inset-bottom)+28px)]">
               {questions.length > 0 ? (
                 <Quiz
@@ -161,8 +187,10 @@ export default function Reels({ chapter, part, backTo }: Props) {
 
       {!onQuiz && data && index === 0 && (
         <div aria-hidden className="pb-safe pointer-events-none absolute inset-x-0 bottom-3 z-10 flex flex-col items-center text-[13px] font-semibold text-white/85">
-          <span className="animate-[nudge_1.6s_ease-in-out_infinite]"><ChevronUp /></span>
-          Swipe up
+          <span className={horizontal ? '-rotate-90' : ''}>
+            <span className="block animate-[nudge_1.6s_ease-in-out_infinite]"><ChevronUp /></span>
+          </span>
+          {horizontal ? 'Swipe left' : 'Swipe up'}
         </div>
       )}
 
@@ -226,6 +254,14 @@ function DeepDive({ card, onClose }: { card: Card; onClose: () => void }) {
       </div>
     </div>
   )
+}
+
+function scrollToPage(el: HTMLElement | null, index: number, direction: ScrollDirection) {
+  const target = el?.children[index] as HTMLElement | undefined
+  if (!el || !target) return
+  const instant = 'instant' as ScrollBehavior
+  if (direction === 'horizontal') el.scrollTo({ left: target.offsetLeft, top: 0, behavior: instant })
+  else el.scrollTo({ top: target.offsetTop, left: 0, behavior: instant })
 }
 
 function emptyProgress(userId: string, partId: string): PartProgress {
