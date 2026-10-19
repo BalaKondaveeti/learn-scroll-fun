@@ -1,20 +1,25 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
-
-function Placeholder() {
-  return (
-    <main className="pt-safe pb-safe flex min-h-dvh flex-col justify-center px-6">
-      <h1 className="font-display text-4xl font-extrabold">learn-scroll-fun</h1>
-      <p className="mt-3 text-lg text-[var(--muted)]">Short cards, one idea each. Setting things up.</p>
-    </main>
-  )
-}
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { AuthProvider, RequireAuth } from './lib/auth'
+import ChapterView from './pages/ChapterView'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Review from './pages/Review'
 
 export default function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="*" element={<Placeholder />} />
-      </Routes>
-    </HashRouter>
+    <AuthProvider>
+      <HashRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/c/:chapterSlug" element={<ChapterView />} />
+            <Route path="/c/:chapterSlug/p/:partSlug" element={<ChapterView />} />
+            <Route path="/review" element={<Review />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </HashRouter>
+    </AuthProvider>
   )
 }
