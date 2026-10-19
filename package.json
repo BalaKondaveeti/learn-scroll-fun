@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "check:secrets": "sh scripts/scan-secrets.sh",
     "content:validate": "tsx scripts/content.ts validate",
-    "content:import": "tsx scripts/content.ts import"
+    "content:sql": "tsx scripts/content.ts sql"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",
