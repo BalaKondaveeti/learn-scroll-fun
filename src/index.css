@@ -3,32 +3,28 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Display', 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
 }
 
 :root {
-  --bg: #f7f5ff;
-  --surface: #ffffff;
-  --ink: #1d1838;
-  --muted: #6a6488;
-  --line: #e4e0f5;
+  --bg: #ffffff;
+  --raised: #f2f2f4;
+  --ink: #0b0b0c;
+  --muted: #6b6b73;
+  --line: #e6e6ea;
   color-scheme: light;
 }
 .dark {
-  --bg: #15122b;
-  --surface: #211d3d;
-  --ink: #f3f0ff;
-  --muted: #a49fc4;
-  --line: #2f2a52;
+  --bg: #000000;
+  --raised: #161618;
+  --ink: #f5f5f7;
+  --muted: #8e8e95;
+  --line: #26262a;
   color-scheme: dark;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-}
+html, body, #root { height: 100%; }
 body {
   margin: 0;
   background: var(--bg);
@@ -36,31 +32,31 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
 }
 .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
 .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
-}
-
-@keyframes pop {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.04); }
-  100% { transform: scale(1); }
-}
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-6px); }
-  75% { transform: translateX(6px); }
-}
-@keyframes rise {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes burst {
-  from { opacity: 1; transform: rotate(var(--a)) translateX(0); }
-  to { opacity: 0; transform: rotate(var(--a)) translateX(26px); }
-}
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Darkens the top and bottom of full-bleed color so white text and controls stay readable. */
+.scrim {
+  background:
+    linear-gradient(to bottom, rgb(0 0 0 / 0.28) 0%, rgb(0 0 0 / 0) 22%),
+    linear-gradient(to top, rgb(0 0 0 / 0.38) 0%, rgb(0 0 0 / 0) 40%);
+}
+
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.045); } 100% { transform: scale(1); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes burst {
+  from { opacity: 1; transform: rotate(var(--a)) translateX(0) scale(1); }
+  to { opacity: 0; transform: rotate(var(--a)) translateX(34px) scale(0.4); }
+}
+@keyframes nudge { 0%, 100% { transform: translateY(0); opacity: .75; } 50% { transform: translateY(-6px); opacity: 1; } }
+@keyframes sheet { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes drift { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}
