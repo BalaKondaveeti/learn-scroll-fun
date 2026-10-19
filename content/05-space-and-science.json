@@ -1,0 +1,128 @@
+{
+  "chapter": {
+    "slug": "space-and-science",
+    "title": "Space and Science",
+    "description": "Our corner of the universe, and the physics that runs it.",
+    "emoji": "🔭",
+    "color": "#8b5cf6",
+    "sort_order": 5
+  },
+  "parts": [
+    {
+      "slug": "solar-system",
+      "title": "The Solar System",
+      "description": "Surprising facts about our Sun and its planets.",
+      "emoji": "🪐",
+      "cards": [
+        {
+          "kind": "number",
+          "title": "Sunlight is about 8 minutes old",
+          "body": "Light from the Sun takes about 8 minutes and 20 seconds to reach Earth.\n\nSo when you look at the Sun (please don't, directly), you're seeing it as it was a little over eight minutes ago."
+        },
+        {
+          "kind": "number",
+          "title": "1 AU ≈ 150 million km",
+          "body": "Astronomers measure distances in the Solar System with the astronomical unit, or AU: roughly the average distance from Earth to the Sun, about 150 million kilometers.\n\nJupiter is about 5 AU from the Sun. Neptune is about 30 AU."
+        },
+        {
+          "kind": "fact",
+          "title": "The hottest planet isn't the closest",
+          "body": "Mercury is closest to the Sun, but Venus is the hottest planet, with surface temperatures around 465°C.\n\nVenus has a thick atmosphere made mostly of carbon dioxide. It traps heat in a runaway greenhouse effect, hot enough to melt lead."
+        },
+        {
+          "kind": "concept",
+          "title": "Seasons come from the tilt",
+          "body": "Earth's axis is tilted about 23.4 degrees. As Earth orbits, first one hemisphere and then the other leans toward the Sun, getting more direct sunlight and longer days.\n\nSeasons aren't caused by distance. Earth is actually closest to the Sun in early January, during northern winter."
+        },
+        {
+          "kind": "fact",
+          "title": "Jupiter outweighs everyone",
+          "body": "Jupiter is more than twice as massive as all the other planets combined.\n\nIt is mostly hydrogen and helium, and its Great Red Spot is a storm bigger than Earth."
+        },
+        {
+          "kind": "fact",
+          "title": "A day longer than a year",
+          "body": "Venus spins very slowly, and backwards compared with most planets. One full rotation takes about 243 Earth days, while one trip around the Sun takes about 225.\n\nSo on Venus, a day (one rotation) is longer than a year."
+        },
+        {
+          "kind": "concept",
+          "title": "Why Pluto was reclassified",
+          "body": "In 2006, the International Astronomical Union defined a planet as a body that orbits the Sun, is round from its own gravity, and has cleared its orbit of other material.\n\nPluto meets the first two but shares its region with many icy objects in the Kuiper Belt. So it became a dwarf planet."
+        }
+      ],
+      "questions": [
+        {
+          "question": "About how long does sunlight take to reach Earth?",
+          "options": ["8 seconds", "About 8 minutes", "About 8 hours", "About 8 days"],
+          "correct_index": 1,
+          "explanation": "About 8 minutes and 20 seconds."
+        },
+        {
+          "question": "Why is Venus hotter than Mercury?",
+          "options": [
+            "Venus is closer to the Sun",
+            "Venus has active volcanoes everywhere",
+            "Its thick carbon dioxide atmosphere traps heat",
+            "Venus spins faster"
+          ],
+          "correct_index": 2,
+          "explanation": "A runaway greenhouse effect keeps Venus around 465°C."
+        },
+        {
+          "question": "What causes Earth's seasons?",
+          "options": [
+            "Changes in Earth's distance from the Sun",
+            "The tilt of Earth's axis",
+            "The Moon's orbit",
+            "Changes in the Sun's brightness"
+          ],
+          "correct_index": 1,
+          "explanation": "A tilt of about 23.4° changes how directly sunlight hits each hemisphere."
+        },
+        {
+          "question": "Why is Pluto classed as a dwarf planet?",
+          "options": [
+            "It isn't round",
+            "It doesn't orbit the Sun",
+            "It hasn't cleared its orbit of other objects",
+            "It has no moons"
+          ],
+          "correct_index": 2,
+          "explanation": "Pluto shares its orbital region with other Kuiper Belt objects."
+        },
+        {
+          "question": "On which planet is a day longer than a year?",
+          "options": ["Mars", "Venus", "Jupiter", "Mercury"],
+          "correct_index": 1,
+          "explanation": "Venus takes about 243 Earth days to rotate once but about 225 to orbit the Sun."
+        }
+      ]
+    },
+    {
+      "slug": "rockets",
+      "title": "How rockets work",
+      "description": "Pushing against nothing, and getting to orbit.",
+      "emoji": "🚀",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Throw stuff backward, go forward",
+          "body": "A rocket doesn't push against the air. It throws hot gas out of its nozzle very fast, and the gas pushes the rocket the other way, which is Newton's third law.\n\nRockets also carry their own oxidizer along with fuel, so they can burn in the vacuum of space where there's no air."
+        }
+      ]
+    },
+    {
+      "slug": "light",
+      "title": "Light",
+      "description": "The fastest thing there is.",
+      "emoji": "💡",
+      "cards": [
+        {
+          "kind": "number",
+          "title": "299,792 kilometers per second",
+          "body": "That's the speed of light in a vacuum, about 300,000 km every second. Light could circle Earth about seven and a half times in one second.\n\nThe meter is now defined using this speed, which is set at exactly 299,792,458 meters per second."
+        }
+      ]
+    }
+  ]
+}

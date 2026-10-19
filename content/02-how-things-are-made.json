@@ -1,0 +1,156 @@
+{
+  "chapter": {
+    "slug": "how-things-are-made",
+    "title": "How Things Are Made",
+    "description": "From tree to tire, sand to window, pulp to notebook.",
+    "emoji": "🏭",
+    "color": "#10b981",
+    "sort_order": 2
+  },
+  "parts": [
+    {
+      "slug": "rubber",
+      "title": "Rubber",
+      "description": "Natural rubber from trees, and the synthetic kinds made from oil.",
+      "emoji": "🌳",
+      "parts": [
+        {
+          "slug": "natural-rubber",
+          "title": "Natural rubber",
+          "description": "How latex from a tree becomes a tire.",
+          "emoji": "🌿",
+          "cards": [
+            {
+              "kind": "concept",
+              "title": "It starts with a cut in the bark",
+              "body": "Natural rubber comes from latex, a milky fluid in the bark of the rubber tree, Hevea brasiliensis.\n\nA tapper shaves a thin, sloping groove into the bark. Latex oozes out, runs down the groove and drips into a cup tied to the trunk. The same tree can be tapped again every few days for years.",
+              "deep_dive": "Latex isn't the tree's sap. It flows in separate channels in the bark called latex vessels. The cut is angled so the latex runs one way into the cup, and tappers take only a thin sliver each time so the bark can heal and be tapped again."
+            },
+            {
+              "kind": "fact",
+              "title": "Why tappers start before dawn",
+              "body": "Tapping usually begins in the early morning. Latex flows best when the tree's cells are full of water and under higher pressure, which happens in the cool hours before the day heats up.\n\nLater in the day, the tree loses water to the air and latex flow slows."
+            },
+            {
+              "kind": "number",
+              "title": "About 6 to 7 years",
+              "body": "That is roughly how long a rubber tree grows before it is ready to tap. After that, a tree typically stays productive for about 25 years or more before yields fall and it is replanted.\n\nRubber is a long bet: a farmer plants today for income years from now."
+            },
+            {
+              "kind": "concept",
+              "title": "From liquid to sheet",
+              "body": "Fresh latex is mostly water. To turn it into solid rubber, processors add a mild acid, often formic acid. The rubber particles clump together, or coagulate, into a soft white mass.\n\nThat mass is pressed through rollers into thin sheets, then dried. Sheets dried in smokehouses are called ribbed smoked sheets, a common grade traded worldwide."
+            },
+            {
+              "kind": "concept",
+              "title": "Vulcanization: the trick that made rubber useful",
+              "body": "Raw rubber gets sticky in heat and brittle in cold. In 1839, Charles Goodyear found that heating rubber with sulfur changes it for good.\n\nSulfur forms bridges, called cross-links, between the long rubber molecules. The result stays elastic across a wide range of temperatures and springs back after stretching. Almost every rubber product today is vulcanized.",
+              "deep_dive": "Chemically, natural rubber is mostly a polymer called cis-1,4-polyisoprene: long chains of the same small unit repeated thousands of times. Without cross-links, the chains slide past each other, which is why raw rubber flows and deforms. With them, the chains are tied into a loose net that can stretch and then pull back."
+            },
+            {
+              "kind": "fact",
+              "title": "Where it's grown",
+              "body": "Most of the world's natural rubber comes from Southeast Asia. Thailand is the largest producer, followed by countries like Indonesia and Vietnam.\n\nIn India, most natural rubber is grown in Kerala, where the warm, wet climate suits the tree."
+            },
+            {
+              "kind": "concept",
+              "title": "Why tires still need trees",
+              "body": "Synthetic rubbers made from oil now outsell natural rubber, but they haven't replaced it. Natural rubber resists tearing well and builds up less heat when it flexes over and over.\n\nThat is why heavy-duty tires, like those on trucks, use a high share of natural rubber. Most tires blend natural and synthetic rubber to get the best of both."
+            }
+          ],
+          "questions": [
+            {
+              "question": "Which tree is the main source of natural rubber?",
+              "options": ["Hevea brasiliensis", "Ficus elastica", "Acacia senegal", "Pinus sylvestris"],
+              "correct_index": 0,
+              "explanation": "Hevea brasiliensis, the rubber tree, produces nearly all commercial natural rubber."
+            },
+            {
+              "question": "Why is rubber usually tapped in the early morning?",
+              "options": [
+                "Workers prefer cooler hours",
+                "Latex flows best when the tree's cells are full of water and under higher pressure",
+                "Sunlight spoils latex instantly",
+                "The bark is softer at night"
+              ],
+              "correct_index": 1,
+              "explanation": "Cool early hours mean higher pressure in the latex vessels, so more latex flows."
+            },
+            {
+              "question": "What does adding a mild acid like formic acid do to latex?",
+              "options": [
+                "Makes it more liquid",
+                "Colors it black",
+                "Makes the rubber particles clump together into a solid",
+                "Vulcanizes it"
+              ],
+              "correct_index": 2,
+              "explanation": "Acid coagulates the latex, which can then be pressed into sheets and dried."
+            },
+            {
+              "question": "What does vulcanization with sulfur do?",
+              "options": [
+                "Removes water from latex",
+                "Forms cross-links between rubber molecules so it stays elastic in heat and cold",
+                "Turns rubber into plastic",
+                "Makes rubber dissolve in water"
+              ],
+              "correct_index": 1,
+              "explanation": "Cross-links tie the polymer chains together, so rubber springs back instead of flowing."
+            },
+            {
+              "question": "Which country produces the most natural rubber?",
+              "options": ["India", "Brazil", "Thailand", "China"],
+              "correct_index": 2,
+              "explanation": "Thailand leads world production, with Indonesia and Vietnam also major producers."
+            }
+          ]
+        },
+        {
+          "slug": "synthetic-rubber",
+          "title": "Synthetic rubber",
+          "description": "Rubbers made from petrochemicals, like EPDM and SBR.",
+          "emoji": "🧪",
+          "cards": [
+            {
+              "kind": "concept",
+              "title": "EPDM, the weatherproof one",
+              "body": "EPDM stands for ethylene propylene diene monomer. It is a synthetic rubber known for standing up to sunlight, ozone, rain and heat.\n\nThat makes it a favorite for things that live outdoors: the rubber seals around car doors and windows, roofing membranes and garden hoses."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "glass",
+      "title": "Glass",
+      "description": "How sand becomes a flat, clear window.",
+      "emoji": "🪟",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Sand, soda ash and limestone",
+          "body": "Most everyday glass is soda-lime glass. It is made by melting silica sand with soda ash, which lowers the melting point, and limestone, which makes the glass stable and durable.\n\nRecycled glass, called cullet, is often added too because it melts more easily and saves energy."
+        },
+        {
+          "kind": "fact",
+          "title": "Floating glass on molten tin",
+          "body": "Window glass is made by the float process, developed by Pilkington in the 1950s. Molten glass is poured onto a bath of molten tin. It spreads into a perfectly flat, even sheet and cools as it moves along.\n\nBefore this, flat glass often had to be ground and polished to get smooth."
+        }
+      ]
+    },
+    {
+      "slug": "notebook",
+      "title": "A school notebook",
+      "description": "Pulp, paper, printed lines and binding.",
+      "emoji": "📓",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "From pulp to ruled pages",
+          "body": "Paper starts as pulp: wood or recycled fibers broken down and mixed with water. The pulp is spread on a moving screen, drained, pressed and dried into huge rolls.\n\nFor a notebook, the paper is cut, ruled lines are printed on, and the pages are folded and bound, usually stitched, glued or held with a spiral wire."
+        }
+      ]
+    }
+  ]
+}

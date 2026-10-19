@@ -1,0 +1,143 @@
+{
+  "chapter": {
+    "slug": "mind",
+    "title": "Mind",
+    "description": "Old philosophy and simple practices for a steadier head.",
+    "emoji": "🧘",
+    "color": "#14b8a6",
+    "sort_order": 6
+  },
+  "parts": [
+    {
+      "slug": "stoicism-basics",
+      "title": "Stoicism basics",
+      "description": "A 2,300-year-old way of handling what life throws at you.",
+      "emoji": "🏺",
+      "cards": [
+        {
+          "kind": "fact",
+          "title": "Named after a porch",
+          "body": "Stoicism was founded by Zeno of Citium, who taught in Athens around 300 BCE.\n\nHe taught at the Stoa Poikile, the 'painted porch', a colonnade on the edge of the city's agora. His followers became known as Stoics, the people of the porch."
+        },
+        {
+          "kind": "concept",
+          "title": "What's up to you",
+          "body": "The Stoic teacher Epictetus opens his handbook, the Enchiridion, by splitting the world in two: things that are up to us and things that aren't.\n\nUp to you: your judgments, choices and actions. Not up to you: your body, your reputation, other people, the weather. Put your energy into the first list."
+        },
+        {
+          "kind": "concept",
+          "title": "It's the story, not the event",
+          "body": "Another idea from the Enchiridion: people aren't disturbed by things, but by the opinions they form about those things.\n\nA rejection email is just words on a screen. 'I'll never get anywhere' is a judgment you add. The Stoics thought you can learn to notice that judgment and question it."
+        },
+        {
+          "kind": "fact",
+          "title": "From slave to teacher",
+          "body": "Epictetus was born into slavery in the first century CE. After gaining his freedom, he taught philosophy and later ran a school in Nicopolis, in Greece.\n\nHe never wrote anything himself. His student Arrian recorded his lessons, which became the Discourses and the Enchiridion."
+        },
+        {
+          "kind": "fact",
+          "title": "An emperor's private notebook",
+          "body": "Marcus Aurelius, Roman emperor from 161 to 180 CE, kept a journal of reminders to himself. He wrote it in Greek, not Latin, and never meant it to be published.\n\nToday we call it Meditations. It's full of notes on staying patient, doing your duty and remembering that life is short.",
+          "deep_dive": "Meditations wasn't written as a book with chapters. It's a set of twelve loose 'books' of short entries, many written while Marcus was on military campaigns. He often repeats the same lessons, which tells you he struggled with them too."
+        },
+        {
+          "kind": "concept",
+          "title": "Rehearse the bad day",
+          "body": "Seneca and other Stoics recommended imagining in advance what could go wrong: losing a job, a plan falling apart, a delay.\n\nThe point isn't to be gloomy. Picturing setbacks ahead of time takes away some of their shock, and it makes you more grateful for what you have right now."
+        },
+        {
+          "kind": "what_would_you_do",
+          "title": "Stuck in traffic, late for a big meeting",
+          "body": "You're stuck in traffic and you'll be 15 minutes late to an important meeting. Your heart's racing and you're gripping the wheel.\n\nWhat's actually up to you here?",
+          "deep_dive": "A Stoic might sort it like this. Not up to you: the traffic, how the others react. Up to you: sending a quick message (once you're safely stopped) to say you're running late, planning what you'll say when you arrive, and how you treat yourself for the next 15 minutes. Once the message is sent, the rest is just waiting."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who founded Stoicism?",
+          "options": ["Socrates", "Zeno of Citium", "Marcus Aurelius", "Epicurus"],
+          "correct_index": 1,
+          "explanation": "Zeno of Citium, teaching in Athens around 300 BCE."
+        },
+        {
+          "question": "Where does the name 'Stoic' come from?",
+          "options": [
+            "A Greek word for calm",
+            "The Stoa Poikile, a painted porch in Athens",
+            "Zeno's home town",
+            "A Roman legion"
+          ],
+          "correct_index": 1,
+          "explanation": "Zeno taught at the Stoa Poikile, so his followers were 'people of the porch'."
+        },
+        {
+          "question": "According to Epictetus, which of these is up to you?",
+          "options": ["Your reputation", "The weather", "Your judgments and choices", "Other people's opinions"],
+          "correct_index": 2,
+          "explanation": "Judgments, choices and actions are ours; most outside things aren't."
+        },
+        {
+          "question": "What was Marcus Aurelius's Meditations originally?",
+          "options": [
+            "A speech to the Senate",
+            "A textbook for his school",
+            "A private journal of notes to himself",
+            "A letter to Seneca"
+          ],
+          "correct_index": 2,
+          "explanation": "He wrote it in Greek for himself and never meant it to be published."
+        },
+        {
+          "question": "What was unusual about Epictetus's early life?",
+          "options": [
+            "He was a Roman emperor",
+            "He was born into slavery",
+            "He was a general",
+            "He grew up in Egypt as a priest"
+          ],
+          "correct_index": 1,
+          "explanation": "He was born enslaved, later freed, and went on to teach in Nicopolis."
+        }
+      ]
+    },
+    {
+      "slug": "staying-calm",
+      "title": "Staying calm",
+      "description": "Small things you can do in the moment.",
+      "emoji": "🌊",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Breathe out longer than in",
+          "body": "When you notice your heart racing, try slowing your breath down so each exhale is a little longer than the inhale. For example, in for four counts, out for six.\n\nSlow breathing like this is a simple, widely taught way to help your body settle. Try a few rounds before you react."
+        }
+      ]
+    },
+    {
+      "slug": "daily-motivation",
+      "title": "Daily motivation",
+      "description": "Getting started when you don't feel like it.",
+      "emoji": "☀️",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Make it tiny",
+          "body": "Motivation often shows up after you start, not before. So shrink the first step until it's almost too small to skip: put on your shoes, open the document, write one sentence.\n\nJames Clear calls a version of this the two-minute rule in Atomic Habits: start with something that takes two minutes or less."
+        }
+      ]
+    },
+    {
+      "slug": "questions-to-ask-yourself",
+      "title": "Questions to ask yourself",
+      "description": "Prompts for a quick check-in.",
+      "emoji": "❓",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Will this matter in a year?",
+          "body": "When something feels huge, ask: will this matter in a year? In five?\n\nIf yes, it deserves real thought and maybe a plan. If not, it might deserve less of today than it's taking."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "chapter": {
+    "slug": "business",
+    "title": "Business",
+    "description": "How real companies solved real problems, the words founders use, and what to check before you start.",
+    "emoji": "💼",
+    "color": "#f59e0b",
+    "sort_order": 1
+  },
+  "parts": [
+    {
+      "slug": "case-studies",
+      "title": "Company case studies",
+      "description": "Six moments where a company faced a hard problem and chose a path.",
+      "emoji": "📚",
+      "cards": [
+        {
+          "kind": "case_study",
+          "title": "Tylenol, 1982: protect people first",
+          "body": "In 1982, seven people in the Chicago area died after taking Tylenol capsules that someone had laced with cyanide. Johnson & Johnson didn't wait to learn how far it spread. It pulled Tylenol from shelves across the US and told the public not to use it.\n\nThe lesson: in a safety crisis, speed and honesty protect the brand better than damage control.",
+          "deep_dive": "The tampering happened after the bottles reached stores, not in the factory, but J&J treated it as its own problem. It later brought Tylenol back in tamper-resistant packaging. The case is still taught as a model of crisis response, and it is a big reason sealed caps and foil seals on medicine became normal."
+        },
+        {
+          "kind": "number",
+          "title": "31 million bottles",
+          "body": "That is roughly how many bottles of Tylenol Johnson & Johnson recalled in 1982. The recall cost the company over $100 million, a huge sum at the time.\n\nThe brand's market share collapsed, then recovered within about a year once the product returned in tamper-resistant packaging."
+        },
+        {
+          "kind": "case_study",
+          "title": "Toyota: let anyone stop the line",
+          "body": "On a Toyota assembly line, any worker can pull a cord, called the andon cord, when they spot a problem. The line stops and a team leader comes to help.\n\nStopping a car factory sounds expensive. Toyota's bet was that fixing a defect at its source is cheaper than shipping it, finding it later, or repeating it a thousand times.",
+          "deep_dive": "This is part of the Toyota Production System. Two ideas sit at its core: just-in-time (make only what is needed, when it is needed, which keeps inventory low) and jidoka (build quality checks into the process so problems surface immediately). Many software teams borrow the same idea when they stop and fix a broken build before adding more code."
+        },
+        {
+          "kind": "case_study",
+          "title": "Southwest: one kind of plane",
+          "body": "For most of its history, Southwest Airlines has flown only one aircraft family: the Boeing 737.\n\nOne type means pilots, mechanics and crews train on a single model, spare parts are shared across the fleet, and any plane can replace any other when something breaks. That simplicity was a big part of how it kept costs low."
+        },
+        {
+          "kind": "case_study",
+          "title": "Apple, 1997: cut the menu",
+          "body": "When Steve Jobs returned to a struggling Apple in 1997, it sold a confusing number of similar computers. He cut the lineup down to a simple grid: consumer and professional, desktop and portable. Four main products.\n\nFewer products meant engineers could focus, and customers could tell what to buy. Saying no was the strategy.",
+          "deep_dive": "That same year, Microsoft invested $150 million in Apple and committed to keeping Office on the Mac, which helped calm fears that Apple might not survive. The iMac followed in 1998 and became Apple's first big hit of that era."
+        },
+        {
+          "kind": "case_study",
+          "title": "Amazon: sell what you built for yourself",
+          "body": "Amazon spent years building computing infrastructure to run its own store. In 2006 it began renting that capability to others as Amazon Web Services, starting with storage (S3) and then rented servers (EC2).\n\nA tool built to solve an internal problem became a business in its own right, and later one of Amazon's most profitable."
+        },
+        {
+          "kind": "what_would_you_do",
+          "title": "Your DVD business vs. streaming",
+          "body": "You run a profitable DVD-by-mail company. Internet speeds are rising and streaming is starting to look possible, but it would compete with the business that pays your bills.\n\nDo you protect the DVD business, or start the thing that could replace it?",
+          "deep_dive": "Netflix faced exactly this. It launched streaming in 2007 while DVDs were still its core. In 2011 it tried to split the two into separate services, with DVDs renamed Qwikster. Customers hated it, the company lost about 800,000 US subscribers in a quarter, and it dropped the Qwikster plan within weeks. The move to streaming itself was right; the rushed split was the mistake."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What did Johnson & Johnson do after the 1982 Tylenol poisonings?",
+          "options": [
+            "Recalled Tylenol nationwide and told people not to use it",
+            "Recalled only the bottles from Chicago stores",
+            "Waited for the police investigation before acting",
+            "Lowered the price to win back customers"
+          ],
+          "correct_index": 0,
+          "explanation": "J&J recalled roughly 31 million bottles across the US, then relaunched in tamper-resistant packaging."
+        },
+        {
+          "question": "What is the andon cord on a Toyota line?",
+          "options": [
+            "A safety harness for workers",
+            "A cord any worker can pull to stop the line when they see a problem",
+            "A conveyor that moves parts just in time",
+            "A signal that a shift is over"
+          ],
+          "correct_index": 1,
+          "explanation": "Stopping to fix a problem at its source is cheaper than passing defects down the line."
+        },
+        {
+          "question": "Why did Southwest fly a single aircraft family?",
+          "options": [
+            "Boeing gave it the planes for free",
+            "Regulators required it",
+            "It simplified training, maintenance and spare parts",
+            "The 737 was the only plane that fit its airports"
+          ],
+          "correct_index": 2,
+          "explanation": "One type means crews and mechanics train once and parts are shared across the whole fleet."
+        },
+        {
+          "question": "How did Apple simplify its lineup in 1997?",
+          "options": [
+            "It stopped making laptops",
+            "It moved to a four-part grid: consumer or pro, desktop or portable",
+            "It only sold software",
+            "It licensed the Mac to other manufacturers"
+          ],
+          "correct_index": 1,
+          "explanation": "Cutting to four core products let teams focus and made buying decisions simple."
+        },
+        {
+          "question": "What went wrong with Netflix's Qwikster plan in 2011?",
+          "options": [
+            "Streaming technology wasn't ready",
+            "Splitting DVDs and streaming angered customers, and Netflix reversed it within weeks",
+            "A competitor bought the Qwikster name",
+            "Regulators blocked the split"
+          ],
+          "correct_index": 1,
+          "explanation": "Netflix lost about 800,000 US subscribers that quarter and quickly dropped the split."
+        }
+      ]
+    },
+    {
+      "slug": "startup-terms",
+      "title": "Startup terms",
+      "description": "The vocabulary you'll hear in every founder conversation.",
+      "emoji": "🗣️",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Burn rate and runway",
+          "body": "Burn rate is how much money a company loses each month. Runway is how many months it can survive at that pace.\n\nRunway = cash in the bank ÷ monthly burn. With $600,000 and a burn of $50,000 a month, you have 12 months to grow, raise money or cut costs."
+        }
+      ]
+    },
+    {
+      "slug": "before-you-start",
+      "title": "Before you start a business",
+      "description": "Questions worth answering before you spend your savings.",
+      "emoji": "🧭",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Know your unit economics",
+          "body": "Before scaling anything, know what one customer is worth. How much do you earn from them over time, and how much does it cost to win and serve them?\n\nIf each sale loses money, growing faster only loses money faster."
+        }
+      ]
+    }
+  ]
+}

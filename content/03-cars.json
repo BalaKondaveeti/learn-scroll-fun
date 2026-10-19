@@ -1,0 +1,143 @@
+{
+  "chapter": {
+    "slug": "cars",
+    "title": "Cars",
+    "description": "What's actually happening under the hood.",
+    "emoji": "🚗",
+    "color": "#ef4444",
+    "sort_order": 3
+  },
+  "parts": [
+    {
+      "slug": "engine",
+      "title": "The engine",
+      "description": "Four strokes, a spinning crank and a lot of controlled explosions.",
+      "emoji": "⚙️",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Suck, squeeze, bang, blow",
+          "body": "Most car engines are four-stroke engines. Each piston repeats four steps:\n\n1. **Intake**: the piston moves down and pulls in air (and fuel).\n2. **Compression**: it moves up and squeezes the mix.\n3. **Power**: the mix burns, pushing the piston down hard.\n4. **Exhaust**: it moves up and pushes the burned gas out."
+        },
+        {
+          "kind": "concept",
+          "title": "Turning up-and-down into round-and-round",
+          "body": "Pistons move straight up and down, but wheels need to spin. The crankshaft solves this.\n\nEach piston connects to the crankshaft through a connecting rod attached off-center, like your leg on a bicycle pedal. Every push down turns the crank, and the crank's rotation eventually reaches the wheels through the gearbox."
+        },
+        {
+          "kind": "number",
+          "title": "One power stroke per two turns",
+          "body": "In a four-stroke engine, each cylinder fires once for every two full turns of the crankshaft, or 720 degrees.\n\nThat's why engines have several cylinders firing in a staggered order. With four cylinders, there's a power stroke every half turn, which keeps the engine smooth."
+        },
+        {
+          "kind": "concept",
+          "title": "Spark or squeeze",
+          "body": "A petrol engine lights the fuel-air mix with a spark plug.\n\nA diesel engine has no spark plugs. It squeezes air so hard that the air gets very hot, then injects diesel fuel, which ignites on its own. That's called compression ignition, and it's why diesel engines run at much higher compression ratios than petrol engines.",
+          "deep_dive": "Compression ratio compares the cylinder's volume with the piston at the bottom to its volume with the piston at the top. Petrol engines commonly sit around 10:1 to 13:1, because squeezing a fuel-air mix too hard can make it ignite early and knock. Diesels only squeeze air, so they can go much higher, often 15:1 or more."
+        },
+        {
+          "kind": "concept",
+          "title": "Valves and the camshaft",
+          "body": "Each cylinder has intake valves to let air in and exhaust valves to let gas out. A camshaft, with egg-shaped lobes, pushes them open at exactly the right moments.\n\nA timing belt or chain links the camshaft to the crankshaft. The camshaft turns at half the crank's speed, because each valve opens once per two crank turns."
+        },
+        {
+          "kind": "concept",
+          "title": "Turbochargers: free energy from exhaust",
+          "body": "Hot exhaust gas leaving the engine still carries energy. A turbocharger uses it to spin a small turbine, which drives a compressor on the same shaft.\n\nThe compressor packs more air into the cylinders. More air lets the engine burn more fuel per stroke, so a smaller engine can make the power of a bigger one."
+        },
+        {
+          "kind": "what_would_you_do",
+          "title": "The check-engine light starts flashing",
+          "body": "You're driving and the check-engine light comes on. It isn't steady. It's flashing, and the car feels a bit rough.\n\nKeep going to your destination, or ease off and get it checked soon?",
+          "deep_dive": "A steady check-engine light usually means a fault has been logged and you should get it scanned soon. A flashing light usually signals a severe misfire. Unburned fuel can then reach the catalytic converter and overheat it, which can damage it. The usual advice is to reduce speed and load and get the car checked as soon as you safely can."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is the order of the four strokes?",
+          "options": [
+            "Compression, intake, exhaust, power",
+            "Intake, compression, power, exhaust",
+            "Intake, power, compression, exhaust",
+            "Power, exhaust, intake, compression"
+          ],
+          "correct_index": 1,
+          "explanation": "Intake, compression, power, exhaust: often remembered as suck, squeeze, bang, blow."
+        },
+        {
+          "question": "How does a diesel engine ignite its fuel?",
+          "options": [
+            "With a spark plug",
+            "With a glow from the exhaust",
+            "Air is compressed until it's hot enough to ignite the injected fuel",
+            "The battery heats the fuel directly"
+          ],
+          "correct_index": 2,
+          "explanation": "That's compression ignition. Glow plugs only help with cold starts in many diesels."
+        },
+        {
+          "question": "How fast does the camshaft turn compared with the crankshaft?",
+          "options": ["Twice as fast", "The same speed", "Half as fast", "Four times as fast"],
+          "correct_index": 2,
+          "explanation": "Each valve opens once per two crank turns, so the cam turns at half speed."
+        },
+        {
+          "question": "What powers a turbocharger?",
+          "options": ["The battery", "Exhaust gas", "A belt from the crankshaft", "The cooling fan"],
+          "correct_index": 1,
+          "explanation": "Exhaust spins the turbine. A supercharger, by contrast, is driven by the engine through a belt or gears."
+        },
+        {
+          "question": "A flashing check-engine light usually means:",
+          "options": [
+            "Low windshield washer fluid",
+            "Time for routine service",
+            "A severe misfire that can damage the catalytic converter",
+            "The fuel cap is loose"
+          ],
+          "correct_index": 2,
+          "explanation": "Ease off and get it checked soon. A loose fuel cap typically triggers a steady light, not a flashing one."
+        }
+      ]
+    },
+    {
+      "slug": "cooling-system",
+      "title": "Cooling system",
+      "description": "How the engine keeps from cooking itself.",
+      "emoji": "🌡️",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "A loop of coolant",
+          "body": "A pump pushes coolant through passages in the engine, where it soaks up heat, then through the radiator at the front of the car, where air carries the heat away.\n\nA thermostat stays closed while the engine is cold so it warms up quickly, then opens to let coolant flow to the radiator."
+        }
+      ]
+    },
+    {
+      "slug": "exhaust",
+      "title": "Exhaust",
+      "description": "Cleaning up what comes out of the engine.",
+      "emoji": "💨",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "The catalytic converter",
+          "body": "A petrol car's three-way catalytic converter handles three harmful gases at once. Precious metals coated on a honeycomb inside help turn carbon monoxide into carbon dioxide, unburned fuel into carbon dioxide and water, and nitrogen oxides into nitrogen."
+        }
+      ]
+    },
+    {
+      "slug": "high-voltage-battery",
+      "title": "High-voltage battery",
+      "description": "What's inside an electric car's battery pack.",
+      "emoji": "🔋",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Cells, modules, pack",
+          "body": "An EV battery pack is built from hundreds or thousands of small lithium-ion cells, grouped into modules, then into one pack under the floor.\n\nA battery management system watches each group's voltage and temperature to keep the pack safe and balanced. Many packs run around 400 volts; some newer cars use about 800."
+        }
+      ]
+    }
+  ]
+}
