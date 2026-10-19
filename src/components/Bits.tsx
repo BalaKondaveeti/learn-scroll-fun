@@ -1,24 +1,21 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { ChevronLeft, Close } from './Icons'
 
-export function BackButton({ to, label = 'Back' }: { to: string; label?: string }) {
+// "glass" sits on full-bleed color; "plain" sits on the black/white app background.
+export function IconLink({ to, label, variant = 'glass', icon = 'back' }: { to: string; label: string; variant?: 'glass' | 'plain'; icon?: 'back' | 'close' }) {
+  const look = variant === 'glass' ? 'bg-black/25 text-white backdrop-blur-md' : 'bg-[var(--raised)] text-[var(--ink)]'
   return (
-    <Link
-      to={to}
-      aria-label={label}
-      className="grid h-10 w-10 place-items-center rounded-full bg-[var(--surface)]/80 text-xl backdrop-blur transition active:scale-95"
-    >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M15 18l-6-6 6-6" />
-      </svg>
+    <Link to={to} aria-label={label} className={`grid h-10 w-10 shrink-0 place-items-center rounded-full transition active:scale-90 ${look}`}>
+      {icon === 'back' ? <ChevronLeft /> : <Close size={20} />}
     </Link>
   )
 }
 
-export function Spinner() {
+export function Spinner({ light = false }: { light?: boolean }) {
   return (
     <div className="grid min-h-[40dvh] place-items-center" role="status" aria-label="Loading">
-      <div className="h-8 w-8 animate-spin rounded-full border-[3px] border-[var(--line)] border-t-[var(--ink)]" />
+      <div className={`h-7 w-7 animate-spin rounded-full border-[3px] ${light ? 'border-white/30 border-t-white' : 'border-[var(--line)] border-t-[var(--ink)]'}`} />
     </div>
   )
 }
@@ -26,13 +23,13 @@ export function Spinner() {
 export function ErrorNotice({ error, onRetry }: { error: Error; onRetry?: () => void }) {
   const missingSchema = /ls_|function|relation/.test(error.message) && /does not exist|not find/.test(error.message)
   return (
-    <div className="mx-5 my-8 rounded-3xl border border-red-400/40 bg-red-500/10 p-5">
-      <p className="font-bold">Couldn't load this.</p>
+    <div className="mx-4 my-8 rounded-3xl bg-[var(--raised)] p-5">
+      <p className="font-semibold">Couldn't load this.</p>
       <p className="mt-1 break-words text-[var(--muted)]">
         {missingSchema ? 'The database tables are missing. Run supabase/migrations/001_init.sql in the Supabase SQL editor.' : error.message}
       </p>
       {onRetry && (
-        <button onClick={onRetry} className="mt-4 rounded-full bg-[var(--ink)] px-5 py-2 font-bold text-[var(--bg)] active:scale-95">
+        <button onClick={onRetry} className="mt-4 rounded-full bg-[var(--ink)] px-5 py-2.5 font-semibold text-[var(--bg)] active:scale-95">
           Try again
         </button>
       )}
@@ -41,5 +38,5 @@ export function ErrorNotice({ error, onRetry }: { error: Error; onRetry?: () => 
 }
 
 export function Page({ children }: { children: ReactNode }) {
-  return <main className="pt-safe pb-safe mx-auto min-h-dvh w-full max-w-xl">{children}</main>
+  return <main className="pb-safe mx-auto min-h-dvh w-full max-w-xl">{children}</main>
 }
