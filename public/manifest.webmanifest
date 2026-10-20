@@ -1,6 +1,6 @@
 {
-  "name": "learn-scroll-fun",
-  "short_name": "Scroll",
+  "name": "Scroll to Learn",
+  "short_name": "Scroll to Learn",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

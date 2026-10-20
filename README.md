@@ -1,6 +1,6 @@
-# learn-scroll-fun
+# Scroll to Learn
 
-A reels-style learning app. Pick a chapter, open a part, swipe through short cards (one idea each), then take a quick quiz. Progress and scores are saved to your Supabase account.
+Scroll to Learn is a reels-style learning app (repo: learn-scroll-fun). Pick a chapter, open a part, swipe through short cards (one idea each), then take a quick quiz. Progress and scores are saved to your Supabase account.
 
 Live: https://balakondaveeti.github.io/learn-scroll-fun/
 
@@ -35,6 +35,10 @@ Run `supabase/migrations/001_init.sql` once in the Supabase dashboard (**SQL Edi
 ### Auth
 
 Sign in with email and password, or with a magic link. For magic links and sign-up confirmation emails to come back to this app, add `https://balakondaveeti.github.io/learn-scroll-fun/**` under **Authentication**, **URL Configuration**, **Redirect URLs**. Until then, use email and password.
+
+## Settings
+
+The gear on Home opens Settings: light or dark theme, swipe up or sideways for cards, and progress resets (one chapter, or everything). A chapter can also be reset from the bottom of its own page. Resetting deletes the user's own rows in `ls_part_progress` and `ls_question_attempts`; content is never touched.
 
 ## Deploy
 
@@ -71,5 +75,5 @@ supabase/migrations/     schema
 supabase/content/        generated content SQL
 src/lib/                 Supabase client, auth, data access
 src/components/          cards, quiz, tiles, progress ring
-src/pages/               Login, Home, ChapterView, Reels, Review
+src/pages/               Login, Home, ChapterView, Reels, Review, Settings
 ```

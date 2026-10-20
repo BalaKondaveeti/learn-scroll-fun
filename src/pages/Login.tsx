@@ -52,10 +52,13 @@ export default function Login() {
 
   return (
     <main className="pt-safe pb-safe fixed inset-0 overflow-y-auto text-white"
-      style={{ background: `${vivid('#ec4899', 0)}, ${vivid('#8b5cf6', 3)}`, backgroundSize: '200% 200%', animation: 'drift 14s ease-in-out infinite alternate' }}>
+      style={{ background: `${vivid('#d946ef', 0)}, ${vivid('#8b5cf6', 3)}`, backgroundSize: '200% 200%', animation: 'drift 14s ease-in-out infinite alternate' }}>
       <div aria-hidden className="scrim pointer-events-none absolute inset-0" />
       <div className="relative mx-auto flex min-h-full w-full max-w-md flex-col justify-end px-6 pt-16 pb-10">
-        <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-14 w-14 rounded-2xl shadow-lg" />
+        <div className="flex items-center gap-3">
+          <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-14 w-14 rounded-2xl shadow-lg" />
+          <span className="text-[20px] font-bold tracking-[-0.02em]">Scroll to Learn</span>
+        </div>
         <h1 className="font-display mt-6 text-[48px] leading-[0.95] font-extrabold tracking-[-0.045em]">
           One idea
           <br />

@@ -1,6 +1,6 @@
 # Content guide
 
-This file explains how to write content for learn-scroll-fun. It is written so that anyone, including an AI assistant in a fresh chat, can read it and produce a valid content file without seeing the rest of the code.
+This file explains how to write content for Scroll to Learn. It is written so that anyone, including an AI assistant in a fresh chat, can read it and produce a valid content file without seeing the rest of the code.
 
 ## How content gets into the app
 
