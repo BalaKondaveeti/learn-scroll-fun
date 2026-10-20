@@ -12,7 +12,7 @@ export function PartTile({ part, to, color, variant, node, childCount }: Props) 
   const status = score ?? (childCount > 0 ? `${childCount} parts` : progress > 0 ? 'Started' : 'New')
   return (
     <Link to={to} className="flex items-center gap-3.5 rounded-2xl px-2 py-2.5 transition active:scale-[0.98] active:bg-[var(--raised)]">
-      <div className="relative grid h-[68px] w-[56px] shrink-0 place-items-center overflow-hidden rounded-[14px] text-[26px]" style={{ background: vivid(color, variant) }} aria-hidden>
+      <div className="relative grid h-[68px] w-[56px] shrink-0 place-items-center overflow-hidden rounded-[14px] text-[26px]" style={{ background: vivid(color, variant, true) }} aria-hidden>
         {part.emoji}
         {progress > 0 && (
           <div className="absolute inset-x-0 bottom-0 h-[3px] bg-black/25">
@@ -26,7 +26,7 @@ export function PartTile({ part, to, color, variant, node, childCount }: Props) 
       </div>
       <div className="flex shrink-0 items-center gap-1.5">
         {done ? (
-          <span className="flex items-center gap-1 rounded-full px-2.5 py-1 text-[13px] font-semibold text-white" style={{ background: vivid(color, variant) }}>
+          <span className="flex items-center gap-1 rounded-full px-2.5 py-1 text-[13px] font-semibold text-white" style={{ background: vivid(color, variant, true) }}>
             <Check size={13} /> {score ?? 'Done'}
           </span>
         ) : (

@@ -98,3 +98,30 @@ export async function logAttempt(userId: string, questionId: string, correct: bo
 export async function getReviewQuestions(limit = 10) {
   return unwrap<Question[]>(await sb().rpc('ls_review_questions', { p_limit: limit }))
 }
+
+// The chapter of the most recently updated progress row (works across devices).
+export async function getLastActiveChapter(): Promise<{ chapterId: string; at: number } | null> {
+  const rows = unwrap<{ part_id: string; updated_at: string }[]>(
+    await sb().from('ls_part_progress').select('part_id,updated_at').order('updated_at', { ascending: false }).limit(1),
+  )
+  if (!rows.length) return null
+  const part = unwrap<{ chapter_id: string } | null>(
+    await sb().from('ls_parts').select('chapter_id').eq('id', rows[0].part_id).maybeSingle(),
+  )
+  return part ? { chapterId: part.chapter_id, at: Date.parse(rows[0].updated_at) } : null
+}
+
+export async function resetAllProgress(userId: string) {
+  unwrap(await sb().from('ls_question_attempts').delete().eq('user_id', userId))
+  unwrap(await sb().from('ls_part_progress').delete().eq('user_id', userId))
+}
+
+export async function resetChapterProgress(userId: string, chapterId: string) {
+  const partIds = (await getParts(chapterId)).map((p) => p.id)
+  if (!partIds.length) return
+  const questionIds = unwrap<{ id: string }[]>(await sb().from('ls_questions').select('id').in('part_id', partIds)).map((q) => q.id)
+  if (questionIds.length) {
+    unwrap(await sb().from('ls_question_attempts').delete().eq('user_id', userId).in('question_id', questionIds))
+  }
+  unwrap(await sb().from('ls_part_progress').delete().eq('user_id', userId).in('part_id', partIds))
+}
