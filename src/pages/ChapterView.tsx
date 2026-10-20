@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ErrorNotice, IconLink, Page, Spinner } from '../components/Bits'
+import { Confirm } from '../components/Confirm'
 import { PartTile } from '../components/PartTile'
 import { ProgressRing } from '../components/ProgressRing'
 import { vivid } from '../lib/color'
-import { getChapter, getParts, getProgress } from '../lib/data'
+import { useUserId } from '../lib/authContext'
+import { getChapter, getParts, getProgress, resetChapterProgress } from '../lib/data'
+import { markChapterVisited } from '../lib/recent'
 import type { Part } from '../lib/types'
 import { useAsync } from '../lib/useAsync'
 import Reels from './Reels'
@@ -17,6 +21,12 @@ export default function ChapterView() {
     const [parts, progress] = await Promise.all([getParts(chapter.id), getProgress()])
     return { chapter, parts, progress }
   }, [chapterSlug, partSlug])
+  const userId = useUserId()
+  const [confirming, setConfirming] = useState(false)
+  const chapterId = data?.chapter.id
+  useEffect(() => {
+    if (chapterId) markChapterVisited(chapterId)
+  }, [chapterId])
 
   if (error) return <Page><ErrorNotice error={error} onRetry={reload} /></Page>
   if (!data) return <Page><Spinner /></Page>
@@ -54,15 +64,34 @@ export default function ChapterView() {
           <span className="mt-8 block text-[56px] leading-none" aria-hidden>{heading.emoji}</span>
           {current && <p className="mt-4 text-[15px] font-semibold text-white/80">{parent ? parent.title : chapter.title}</p>}
           <h1 className={`font-display text-[40px] leading-[1] font-extrabold tracking-[-0.035em] text-balance ${current ? 'mt-1' : 'mt-5'}`}>{heading.title}</h1>
-          {heading.description && <p className="mt-3 text-[17px] leading-snug text-white/88">{heading.description}</p>}
-          {node && node.leaf_total > 0 && <p className="mt-4 text-[14px] font-medium text-white/75">{node.leaf_done} of {node.leaf_total} finished</p>}
+          {heading.description && <p className="mt-3 text-[17px] leading-snug text-white">{heading.description}</p>}
+          {node && node.leaf_total > 0 && <p className="mt-4 text-[14px] font-medium text-white/90">{node.leaf_done} of {node.leaf_total} finished</p>}
         </div>
       </section>
-      <div className="flex flex-col gap-1 px-2 pt-3 pb-12">
+      <div className="flex flex-col gap-1 px-2 pt-3 pb-6">
         {children.map((p, i) => (
           <PartTile key={p.id} part={p} to={partPath(p)} color={chapter.color} variant={i} node={progress.get(p.id)} childCount={childrenOf(p.id).length} />
         ))}
       </div>
+      {!current && (progress.get(chapter.id)?.progress ?? 0) > 0 && (
+        <div className="px-4 pb-14">
+          <button onClick={() => setConfirming(true)} className="w-full rounded-2xl bg-[var(--raised)] px-5 py-3.5 text-[16px] font-semibold text-rose-500 active:scale-[0.98]">
+            Reset this chapter’s progress
+          </button>
+        </div>
+      )}
+      {confirming && (
+        <Confirm
+          title={`Reset ${chapter.title}?`}
+          message={`All parts in ${chapter.title} go back to the start, and their quiz scores and missed questions are cleared. This can’t be undone.`}
+          confirmLabel="Reset chapter"
+          onConfirm={async () => {
+            await resetChapterProgress(userId, chapter.id)
+            reload()
+          }}
+          onClose={() => setConfirming(false)}
+        />
+      )}
     </Page>
   )
 }
