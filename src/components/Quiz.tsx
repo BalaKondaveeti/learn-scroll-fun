@@ -83,7 +83,7 @@ export function Quiz({ questions, best, onAnswer, onFinish, onExit, exitLabel = 
         {q.options.map((option, i) => {
           const isCorrect = i === q.correct_index
           const isPicked = i === picked
-          let look = 'bg-white/14 text-white ring-1 ring-white/25 backdrop-blur-md'
+          let look = 'bg-black/20 text-white ring-1 ring-white/35 backdrop-blur-md'
           let mark: ReactNode = String.fromCharCode(65 + i)
           if (revealed && isCorrect) {
             look = `bg-white text-black ${isPicked ? 'animate-[pop_420ms_ease-out]' : ''}`
@@ -92,7 +92,7 @@ export function Quiz({ questions, best, onAnswer, onFinish, onExit, exitLabel = 
             look = 'bg-rose-500/85 text-white ring-1 ring-rose-200/40 animate-[shake_380ms_ease-in-out]'
             mark = <Close size={15} />
           } else if (revealed) {
-            look = 'bg-white/8 text-white/50'
+            look = 'bg-black/15 text-white/60'
           }
           return (
             <button key={i} data-option={i} onClick={() => pick(i)} disabled={revealed}
@@ -107,7 +107,7 @@ export function Quiz({ questions, best, onAnswer, onFinish, onExit, exitLabel = 
       {revealed && (
         <div className="mt-5 animate-[rise_300ms_ease-out]">
           <p className="text-[17px] font-bold">{picked === q.correct_index ? 'Correct!' : 'Not quite.'}</p>
-          {q.explanation && <p className="mt-1 text-[16px] leading-relaxed text-white/85">{q.explanation}</p>}
+          {q.explanation && <p className="mt-1 text-[17px] leading-relaxed text-white">{q.explanation}</p>}
           <button onClick={next} className={`mt-5 ${primary}`}>{index + 1 < total ? 'Next question' : 'See score'}</button>
         </div>
       )}

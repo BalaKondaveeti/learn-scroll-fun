@@ -127,7 +127,7 @@ export default function Reels({ chapter, part, backTo }: Props) {
             </span>
             <div className="min-w-0 flex-1 leading-tight">
               <p className="truncate text-[15px] font-semibold">{part.title}</p>
-              <p className="truncate text-[13px] text-white/75">{chapter.title}</p>
+              <p className="truncate text-[13px] text-white/85">{chapter.title}</p>
             </div>
             <button
               onClick={toggleDirection}
@@ -206,10 +206,10 @@ function CardView({ card, onDeeper }: { card: Card; onDeeper: () => void }) {
     <div className="relative mx-auto flex h-full max-w-xl flex-col justify-center px-5 pt-[calc(env(safe-area-inset-top)+96px)] pb-[calc(env(safe-area-inset-bottom)+64px)]">
       <div className={`no-scrollbar max-h-full overflow-y-auto ${rail ? 'pr-16' : ''}`}>
         <span className="inline-block rounded-full bg-white/18 px-3 py-1 text-[13px] font-semibold backdrop-blur-md">{KIND_LABEL[card.kind]}</span>
-        <h2 className={`font-display mt-4 font-extrabold text-balance ${isNumber ? 'text-[54px] leading-[0.95] tracking-[-0.045em]' : 'text-[34px] leading-[1.05] tracking-[-0.03em]'}`}>
+        <h2 className={`font-display mt-4 font-extrabold text-balance [text-shadow:0_2px_20px_rgb(0_0_0/0.2)] ${isNumber ? 'text-[54px] leading-[0.95] tracking-[-0.045em]' : 'text-[34px] leading-[1.05] tracking-[-0.03em]'}`}>
           {card.title}
         </h2>
-        <div className="mt-4 text-[19px] leading-[1.5] font-medium text-white/92 [text-shadow:0_1px_12px_rgb(0_0_0/0.18)]">
+        <div className="mt-4 text-[20px] leading-[1.5] font-medium text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.25),0_2px_18px_rgb(0_0_0/0.22)]">
           <Markdown>{card.body}</Markdown>
         </div>
       </div>
@@ -248,7 +248,7 @@ function DeepDive({ card, onClose }: { card: Card; onClose: () => void }) {
         <div className="mx-auto max-w-xl px-6 pt-3 pb-8">
           <p className="text-[13px] font-semibold text-white/55">{card.kind === 'what_would_you_do' ? 'What happened' : 'Go deeper'}</p>
           <h3 className="font-display mt-1 text-[24px] leading-tight font-bold tracking-[-0.02em]">{card.title}</h3>
-          <div className="mt-4 text-[17px] leading-[1.6] text-white/85"><Markdown>{card.deep_dive ?? ''}</Markdown></div>
+          <div className="mt-4 text-[18px] leading-[1.6] text-white/92"><Markdown>{card.deep_dive ?? ''}</Markdown></div>
           <button onClick={onClose} className="mt-7 w-full rounded-full bg-white px-5 py-3.5 text-[16px] font-semibold text-black active:scale-[0.97]">Got it</button>
         </div>
       </div>
