@@ -1,0 +1,564 @@
+{
+  "chapter": {
+    "slug": "mahabharata",
+    "title": "Mahabharata and the Gita",
+    "description": "The people, the feud that led to Kurukshetra, and what happened in the 18-day war. Who's who, not the whole story.",
+    "emoji": "🏹",
+    "color": "#ea580c",
+    "sort_order": 8
+  },
+  "parts": [
+    {
+      "slug": "the-gita-moment",
+      "title": "The Gita moment",
+      "description": "Where the Bhagavad Gita sits in the epic, and why it begins on a battlefield.",
+      "emoji": "📜",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "A conversation inside an epic",
+          "body": "The Bhagavad Gita is a conversation between Prince Arjuna and Krishna, who is driving his chariot. It sits inside the Mahabharata, in the Bhishma Parva, the sixth of the epic's 18 books.\n\nIt happens on the battlefield of Kurukshetra, just before the first day of a great war, with both armies lined up and waiting."
+        },
+        {
+          "kind": "number",
+          "title": "18 chapters, 700 verses",
+          "body": "The Gita is traditionally counted as 700 verses in 18 chapters. The Mahabharata around it is enormous, traditionally said to run to about 100,000 verses.\n\nThe number 18 keeps appearing: 18 books in the epic, 18 chapters in the Gita, 18 armies at Kurukshetra and 18 days of war."
+        },
+        {
+          "kind": "fact",
+          "title": "The Gita is told secondhand",
+          "body": "The Gita opens with a question from Dhritarashtra, the blind king of Hastinapura: what are my sons and Pandu's sons doing at Kurukshetra?\n\nHis advisor Sanjaya answers. The sage Vyasa had given Sanjaya divine sight so he could see and hear the battlefield from far away. So the whole Gita reaches us as Sanjaya's report to the king."
+        },
+        {
+          "kind": "concept",
+          "title": "Arjuna drops his bow",
+          "body": "Arjuna asks Krishna to drive his chariot between the two armies. Facing him he sees his grand-uncle Bhishma, his teacher Drona, cousins, friends and relatives.\n\nOverwhelmed, he says he would rather die than kill his own family. He sets down his bow and sits in the chariot. The first chapter is named after this despair: Arjuna Vishada Yoga."
+        },
+        {
+          "kind": "concept",
+          "title": "Krishna's answer",
+          "body": "The other 17 chapters are Krishna's reply. He talks about duty, action without attachment to results, the self that does not die, controlling the mind, devotion, and the nature of the divine.\n\nIn chapter 11, he shows Arjuna his cosmic form, the Vishvarupa. By the last chapter, Arjuna says his confusion is gone and he will act."
+        },
+        {
+          "kind": "number",
+          "title": "18 akshauhinis",
+          "body": "Armies in the epic are counted in akshauhinis, a unit the Mahabharata defines as 21,870 chariots, 21,870 elephants, 65,610 horses and 109,350 foot soldiers.\n\nAt Kurukshetra, the Kauravas had 11 akshauhinis and the Pandavas 7. The Pandavas went in outnumbered."
+        },
+        {
+          "kind": "fact",
+          "title": "Kurukshetra is a real place",
+          "body": "Kurukshetra is a town and district in present-day Haryana, north of Delhi. It is a major pilgrimage site, and Jyotisar near the town is traditionally pointed to as the spot where the Gita was spoken."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who are the two people talking in the Bhagavad Gita?",
+          "options": ["Arjuna and Krishna", "Yudhishthira and Bhishma", "Dhritarashtra and Vidura", "Karna and Duryodhana"],
+          "correct_index": 0,
+          "explanation": "Arjuna asks and Krishna, his charioteer, answers."
+        },
+        {
+          "question": "How does the Gita reach the blind king Dhritarashtra?",
+          "options": [
+            "Arjuna writes him a letter",
+            "Sanjaya, given divine sight by Vyasa, describes it to him",
+            "Krishna visits the palace",
+            "He hears it from Bhishma after the war"
+          ],
+          "correct_index": 1,
+          "explanation": "The whole Gita is Sanjaya's report of what he sees and hears on the battlefield."
+        },
+        {
+          "question": "Why does Arjuna put down his bow?",
+          "options": [
+            "He is wounded",
+            "He sees his elders, teachers and relatives on the other side and can't bear to fight them",
+            "Krishna orders him to",
+            "The battle has been called off"
+          ],
+          "correct_index": 1,
+          "explanation": "His grief and confusion at fighting his own family is what starts the conversation."
+        },
+        {
+          "question": "How many chapters does the Bhagavad Gita have?",
+          "options": ["12", "18", "24", "100"],
+          "correct_index": 1,
+          "explanation": "18 chapters and traditionally 700 verses."
+        },
+        {
+          "question": "Which side had the bigger army at Kurukshetra?",
+          "options": [
+            "The Pandavas, with 11 akshauhinis",
+            "Both were equal",
+            "The Kauravas, with 11 akshauhinis to the Pandavas' 7",
+            "Neither side had an army; it was single combat"
+          ],
+          "correct_index": 2,
+          "explanation": "The Kauravas had 11 akshauhinis; the Pandavas had 7."
+        }
+      ]
+    },
+    {
+      "slug": "pandavas",
+      "title": "Who's who: the Pandavas",
+      "description": "The five brothers, their mother and their wife, and what each is known for.",
+      "emoji": "🛡️",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Five sons of Pandu",
+          "body": "King Pandu could not father children because of a curse. His wife Kunti had a mantra, given by the sage Durvasa, that let her call on a god and have a child by him. She shared it with Pandu's second wife, Madri.\n\nThat is why each Pandava brother is called the son of a god."
+        },
+        {
+          "kind": "concept",
+          "title": "Yudhishthira: the truthful one",
+          "body": "The eldest Pandava, son of Kunti and Dharma, the god of righteousness. He is known for honesty and calm judgment, and he later becomes king.\n\nHis weakness is gambling. In a game of dice he loses his kingdom, his brothers, himself and his wife, which sets the road to war in motion."
+        },
+        {
+          "kind": "concept",
+          "title": "Bhima: the strongest",
+          "body": "Son of Kunti and Vayu, the wind god. Bhima has enormous strength and a huge appetite, and he fights with a mace.\n\nHe kills powerful enemies like the demons Hidimba and Baka, and in the war he kills Dushasana and Duryodhana, fulfilling vows he made after Draupadi was humiliated."
+        },
+        {
+          "kind": "concept",
+          "title": "Arjuna: the archer",
+          "body": "Son of Kunti and Indra, king of the gods. Arjuna is the greatest archer of his time, Drona's favorite student, and Krishna's close friend.\n\nHe carries the Gandiva bow and can shoot with either hand, which earned him the name Savyasachi. He also won divine weapons, including the Pashupatastra from Shiva.",
+          "deep_dive": "Arjuna won Draupadi at her swayamvara by hitting the eye of a revolving fish target while looking only at its reflection. He received the Gandiva from the fire god Agni at the burning of the Khandava forest. In the war he faces his own teachers and elders, which is exactly why he breaks down before it begins."
+        },
+        {
+          "kind": "concept",
+          "title": "Nakula and Sahadeva: the twins",
+          "body": "The youngest two, sons of Madri and the Ashvins, the twin gods of healing. After Madri's death, Kunti raised them as her own.\n\nNakula is known for his good looks and skill with horses. Sahadeva is known for wisdom and knowledge. In the war, Sahadeva kills Shakuni."
+        },
+        {
+          "kind": "concept",
+          "title": "Draupadi: born from fire",
+          "body": "Daughter of King Drupada of Panchala, said to have risen from a sacrificial fire. She becomes the shared wife of all five Pandavas.\n\nWhen Yudhishthira loses her in the dice game, she is dragged into the royal court and insulted. Her humiliation is one of the deepest causes of the war."
+        },
+        {
+          "kind": "concept",
+          "title": "Kunti: mother with a secret",
+          "body": "Mother of Yudhishthira, Bhima and Arjuna, and Krishna's aunt. Before her marriage she tested Durvasa's mantra on the sun god Surya and had a son, Karna.\n\nAfraid of the scandal, she set the baby afloat on a river. She tells Karna the truth only shortly before the war."
+        },
+        {
+          "kind": "concept",
+          "title": "The next generation",
+          "body": "Abhimanyu, son of Arjuna and Krishna's sister Subhadra, is a brilliant young warrior who dies in the war.\n\nGhatotkacha, son of Bhima and Hidimbi, has the powers of a rakshasa, including flight and illusion. Draupadi's five sons by the brothers, the Upapandavas, also fight."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which god is Arjuna's father?",
+          "options": ["Vayu", "Indra", "Dharma", "Surya"],
+          "correct_index": 1,
+          "explanation": "Arjuna is Indra's son. Vayu is Bhima's father, Dharma is Yudhishthira's, and Surya is Karna's."
+        },
+        {
+          "question": "What is Bhima best known for?",
+          "options": ["Archery", "Enormous strength and fighting with a mace", "Knowledge of astrology", "Never telling a lie"],
+          "correct_index": 1,
+          "explanation": "He's the strongest of the brothers and kills Dushasana and Duryodhana in the war."
+        },
+        {
+          "question": "Who is the mother of Nakula and Sahadeva?",
+          "options": ["Kunti", "Gandhari", "Madri", "Draupadi"],
+          "correct_index": 2,
+          "explanation": "They are Madri's sons by the Ashvins. Kunti raised them after Madri died."
+        },
+        {
+          "question": "What was Yudhishthira's great weakness?",
+          "options": ["Anger", "Gambling", "Fear of battle", "Greed for land"],
+          "correct_index": 1,
+          "explanation": "He lost everything, including Draupadi, in a game of dice."
+        },
+        {
+          "question": "Why is Arjuna called Savyasachi?",
+          "options": [
+            "He never misses a target",
+            "He can shoot with either hand",
+            "He was born at sunrise",
+            "He carries two bows"
+          ],
+          "correct_index": 1,
+          "explanation": "Savyasachi means someone who can draw the bow with the left hand as well as the right."
+        }
+      ]
+    },
+    {
+      "slug": "kaurava-side",
+      "title": "Who's who: the Kaurava side",
+      "description": "The blind king's family, and the great warriors who fought for them.",
+      "emoji": "⚔️",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Dhritarashtra and Gandhari",
+          "body": "Dhritarashtra was born blind, so his younger brother Pandu was made king first. After Pandu's death, Dhritarashtra ruled in Hastinapura.\n\nHis wife Gandhari blindfolded herself for life to share his blindness. They had 100 sons, the Kauravas, and one daughter, Dushala. His love for his sons keeps him from stopping their wrongs."
+        },
+        {
+          "kind": "concept",
+          "title": "Duryodhana: the rival",
+          "body": "The eldest Kaurava, and a formidable mace fighter trained by Krishna's brother Balarama. He believes the throne is his by right and resents the Pandavas from childhood.\n\nHe plots against them again and again. Before the war, he refuses to give them even the five villages they ask for."
+        },
+        {
+          "kind": "concept",
+          "title": "Shakuni: the dice master",
+          "body": "Gandhari's brother, a prince of Gandhara, and Duryodhana's uncle and advisor.\n\nHe is a master of dice. He plays on Duryodhana's behalf in the fateful game and wins everything from Yudhishthira. He is killed by Sahadeva on the last day of the war."
+        },
+        {
+          "kind": "concept",
+          "title": "Dushasana: the insult",
+          "body": "The second Kaurava brother. In the dice hall, he drags Draupadi into court by her hair and tries to strip her in front of everyone. In the popular telling, her sari becomes endless and cannot be pulled away.\n\nBhima vows revenge, and kills him on the 16th day of the war."
+        },
+        {
+          "kind": "concept",
+          "title": "Karna: the tragic hero",
+          "body": "Kunti's firstborn son by the sun god Surya, so the Pandavas' eldest brother, though he doesn't know it for most of his life. He was born with divine armor and earrings, and raised by a charioteer.\n\nMocked for his low status, he finds a friend in Duryodhana, who makes him king of Anga. He stays loyal to Duryodhana to the end.",
+          "deep_dive": "Karna is famous for generosity. When Indra, disguised as a brahmin, asks for his armor and earrings to protect Arjuna, Karna cuts them off and gives them away, knowing what it costs him. In return Indra gives him a weapon that can be used only once. Even after Kunti tells him he is her son, Karna refuses to switch sides, though he promises her he will spare all her sons except Arjuna."
+        },
+        {
+          "kind": "concept",
+          "title": "Bhishma: the grand-uncle",
+          "body": "Born Devavrata, son of King Shantanu and the river goddess Ganga. He took a vow never to marry or claim the throne so his father could marry Satyavati. The vow was so fierce he became known as Bhishma, the one of the terrible vow.\n\nHe was granted the power to choose the moment of his own death. He leads the Kaurava army for the first ten days."
+        },
+        {
+          "kind": "concept",
+          "title": "Drona: the teacher",
+          "body": "Dronacharya taught weapons to both the Pandavas and the Kauravas, and Arjuna was his favorite student. He is a brahmin who became a supreme warrior.\n\nBound by duty to Hastinapura, he fights for the Kauravas and leads their army after Bhishma falls."
+        },
+        {
+          "kind": "concept",
+          "title": "Ashwatthama: the one who survives",
+          "body": "Drona's son, born with a gem on his forehead, and one of the chiranjivis, beings said to live for ages.\n\nAfter the war is lost, he attacks the Pandava camp at night and kills Draupadi's sons and Dhrishtadyumna in their sleep. For this, Krishna curses him to wander the earth."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why did Gandhari wear a blindfold all her life?",
+          "options": [
+            "As a punishment from a sage",
+            "To share her husband Dhritarashtra's blindness",
+            "Because she was born blind",
+            "To hide her identity"
+          ],
+          "correct_index": 1,
+          "explanation": "She chose to share Dhritarashtra's blindness."
+        },
+        {
+          "question": "Who played dice on Duryodhana's behalf?",
+          "options": ["Karna", "Dushasana", "Shakuni", "Drona"],
+          "correct_index": 2,
+          "explanation": "Shakuni, Duryodhana's uncle and a master of dice."
+        },
+        {
+          "question": "What is Karna's real relationship to the Pandavas?",
+          "options": [
+            "He is their cousin through Gandhari",
+            "He is Kunti's firstborn, so their eldest brother",
+            "He is Drona's son",
+            "He has no relation to them"
+          ],
+          "correct_index": 1,
+          "explanation": "Kunti had Karna by Surya before her marriage."
+        },
+        {
+          "question": "What special power did Bhishma have?",
+          "options": [
+            "He could not be hit by arrows",
+            "He could choose the moment of his own death",
+            "He could become invisible",
+            "He could see the future"
+          ],
+          "correct_index": 1,
+          "explanation": "This is why he could lie on a bed of arrows after falling and choose when to die."
+        },
+        {
+          "question": "What does Ashwatthama do after the war is lost?",
+          "options": [
+            "He becomes king of Hastinapura",
+            "He joins the Pandavas",
+            "He attacks the Pandava camp at night and kills Draupadi's sons",
+            "He retires to the forest in peace"
+          ],
+          "correct_index": 2,
+          "explanation": "The night raid is one of the darkest moments of the epic, and Krishna curses him for it."
+        }
+      ]
+    },
+    {
+      "slug": "krishna-and-the-elders",
+      "title": "Krishna and the others",
+      "description": "Krishna, plus the advisors and relatives who shaped events from the side.",
+      "emoji": "🦚",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Krishna",
+          "body": "Prince of the Yadavas, ruling from Dwaraka, and worshipped as an avatar of Vishnu. He is the Pandavas' cousin (Kunti is his aunt) and Arjuna's closest friend.\n\nIn the war he vows not to take up weapons. He serves as Arjuna's charioteer, and his advice shapes every major turn of the fighting."
+        },
+        {
+          "kind": "case_study",
+          "title": "Krishna or his army?",
+          "body": "Before the war, Arjuna and Duryodhana both go to Krishna for help. He offers a choice: his large Narayani army, or himself alone, unarmed and not fighting.\n\nArjuna chooses Krishna. Duryodhana happily takes the army. The lesson drawn from it: wisdom and guidance can matter more than numbers."
+        },
+        {
+          "kind": "concept",
+          "title": "Vidura: the wise advisor",
+          "body": "Half-brother of Dhritarashtra and Pandu, and minister at Hastinapura. He is known for wisdom and fairness, and his advice to the king is collected as the Vidura Niti.\n\nHe warns the Pandavas about the plot to burn them alive and repeatedly urges Dhritarashtra to stop his sons."
+        },
+        {
+          "kind": "concept",
+          "title": "Vyasa: author and grandfather",
+          "body": "The sage Vyasa is traditionally credited with composing the Mahabharata. He is also part of the story: he is the biological father of Dhritarashtra, Pandu and Vidura, so grandfather to both sides.\n\nHe gives Sanjaya the divine sight to narrate the war."
+        },
+        {
+          "kind": "concept",
+          "title": "Balarama: the one who stayed out",
+          "body": "Krishna's elder brother, a mighty warrior who taught mace fighting to both Bhima and Duryodhana.\n\nUnwilling to fight either of his students' sides, he leaves on a pilgrimage during the war. He returns for the final duel and is furious when Bhima strikes Duryodhana below the waist."
+        },
+        {
+          "kind": "concept",
+          "title": "Dhrishtadyumna and Shikhandi",
+          "body": "Draupadi's brother Dhrishtadyumna, also said to be born from fire, commands the Pandava army for the whole war. He is destined to kill Drona, and does.\n\nShikhandi, another child of Drupada, was born female and is linked to Amba, a woman Bhishma had wronged. Bhishma refuses to fight Shikhandi, and that becomes the key to his fall."
+        },
+        {
+          "kind": "concept",
+          "title": "Shalya: an uncle on the wrong side",
+          "body": "King of Madra and brother of Madri, so uncle to Nakula and Sahadeva. He sets out to join the Pandavas, but Duryodhana wins him over through hospitality.\n\nHe ends up as Karna's charioteer, where he undermines Karna's confidence, and leads the Kaurava army on the last day. Yudhishthira kills him."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What choice did Krishna offer Arjuna and Duryodhana?",
+          "options": [
+            "Gold or land",
+            "His army, or himself alone and unarmed",
+            "To fight or to make peace",
+            "His bow or his chariot"
+          ],
+          "correct_index": 1,
+          "explanation": "Arjuna chose Krishna; Duryodhana chose the Narayani army."
+        },
+        {
+          "question": "What is Krishna's role in the war?",
+          "options": [
+            "Commander of the Pandava army",
+            "Arjuna's charioteer, having vowed not to take up weapons",
+            "King of Hastinapura",
+            "Neutral observer on a pilgrimage"
+          ],
+          "correct_index": 1,
+          "explanation": "He drives Arjuna's chariot and guides him, without fighting himself."
+        },
+        {
+          "question": "Who commanded the Pandava army throughout the war?",
+          "options": ["Arjuna", "Bhima", "Dhrishtadyumna", "Krishna"],
+          "correct_index": 2,
+          "explanation": "Draupadi's brother Dhrishtadyumna was the Pandava commander."
+        },
+        {
+          "question": "Why did Balarama not fight in the war?",
+          "options": [
+            "He was injured",
+            "He had taught both Bhima and Duryodhana and would not take sides",
+            "Krishna forbade him",
+            "He was too old"
+          ],
+          "correct_index": 1,
+          "explanation": "He went on a pilgrimage instead."
+        },
+        {
+          "question": "How is Vyasa related to both sides?",
+          "options": [
+            "He is their teacher",
+            "He is the biological father of Dhritarashtra and Pandu, so grandfather to both",
+            "He is Krishna's father",
+            "He is Bhishma's son"
+          ],
+          "correct_index": 1,
+          "explanation": "Vyasa is the author of the epic and also grandfather to the Kauravas and Pandavas."
+        }
+      ]
+    },
+    {
+      "slug": "road-to-war",
+      "title": "What led to the war",
+      "description": "Rivalry, a fire, a game of dice and 13 years of exile.",
+      "emoji": "🎲",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Who should be king?",
+          "body": "Dhritarashtra was the elder brother but blind, so Pandu became king. After Pandu died, Dhritarashtra ruled.\n\nThat left a question with no easy answer: should the next king be Yudhishthira, eldest son of the last king, or Duryodhana, eldest son of the ruling one? Everything that follows grows from this dispute."
+        },
+        {
+          "kind": "case_study",
+          "title": "The house of lac",
+          "body": "Duryodhana has a palace built for the Pandavas at Varanavata out of lac and other materials that burn easily. The plan is to set it on fire with them inside.\n\nVidura warns them in time. They dig a tunnel, escape the fire, and go into hiding, letting the world believe they are dead."
+        },
+        {
+          "kind": "case_study",
+          "title": "Indraprastha and a bitter visit",
+          "body": "To keep the peace, Dhritarashtra gives the Pandavas a share of the kingdom. They build a magnificent capital, Indraprastha, and Yudhishthira performs the Rajasuya sacrifice, marking him as an emperor.\n\nVisiting the dazzling palace, Duryodhana mistakes floor for water and water for floor, falls in, and is laughed at. His envy hardens."
+        },
+        {
+          "kind": "case_study",
+          "title": "The game of dice",
+          "body": "Duryodhana invites Yudhishthira to a game of dice, with Shakuni playing for him. Yudhishthira bets and loses his wealth, his kingdom, his brothers, himself, and finally Draupadi.\n\nDraupadi is dragged into court and humiliated. Bhima vows to kill Dushasana and break Duryodhana's thigh."
+        },
+        {
+          "kind": "number",
+          "title": "12 years plus 1",
+          "body": "After a second game, the Pandavas must spend 12 years in exile in the forest, then one more year living in disguise. If they are discovered in that final year, the whole exile starts over.\n\nThey survive all 13 years and come back to claim their kingdom."
+        },
+        {
+          "kind": "fact",
+          "title": "A year in disguise",
+          "body": "The Pandavas spend the hidden year at the court of King Virata. Yudhishthira poses as a courtier, Bhima as a cook, Arjuna as Brihannala, a dance teacher, Nakula as a horse keeper, Sahadeva as a cowherd, and Draupadi as a maid.\n\nThey complete the year without being exposed."
+        },
+        {
+          "kind": "case_study",
+          "title": "Five villages",
+          "body": "Back from exile, the Pandavas try for peace. Krishna goes to Hastinapura as their envoy, asking in the end for just five villages, one for each brother.\n\nDuryodhana refuses, saying he won't give up even as much land as the point of a needle would cover. Diplomacy fails, and both sides prepare for war."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What was the house of lac?",
+          "options": [
+            "A palace built to burn with the Pandavas inside",
+            "The Pandavas' new capital",
+            "The hall where the dice game was played",
+            "Bhishma's home"
+          ],
+          "correct_index": 0,
+          "explanation": "Vidura's warning let them escape through a tunnel."
+        },
+        {
+          "question": "What did Yudhishthira lose in the game of dice?",
+          "options": [
+            "Only his gold",
+            "His kingdom only",
+            "His wealth, kingdom, brothers, himself and Draupadi",
+            "Nothing; he won"
+          ],
+          "correct_index": 2,
+          "explanation": "He staked and lost everything, ending with Draupadi."
+        },
+        {
+          "question": "How long was the Pandavas' exile?",
+          "options": [
+            "5 years",
+            "12 years in the forest plus 1 year in disguise",
+            "14 years in the forest",
+            "1 year in disguise only"
+          ],
+          "correct_index": 1,
+          "explanation": "If found in the hidden 13th year, they would have had to start over."
+        },
+        {
+          "question": "Where did the Pandavas spend their year in disguise?",
+          "options": ["Dwaraka", "Indraprastha", "King Virata's court", "Panchala"],
+          "correct_index": 2,
+          "explanation": "They lived at Virata's court under false identities."
+        },
+        {
+          "question": "What did the Pandavas finally ask for to avoid war?",
+          "options": ["Half the kingdom", "Five villages", "Hastinapura", "Only an apology"],
+          "correct_index": 1,
+          "explanation": "Duryodhana refused even that, saying not even a needle-point of land."
+        }
+      ]
+    },
+    {
+      "slug": "eighteen-days",
+      "title": "Inside the 18-day war",
+      "description": "Who led each phase, the turning points, and how it ended.",
+      "emoji": "🔥",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Four Kaurava commanders",
+          "body": "The Kaurava army changed commanders as each one fell:\n\n1. **Bhishma**, days 1 to 10\n2. **Drona**, days 11 to 15\n3. **Karna**, days 16 and 17\n4. **Shalya**, day 18\n\nOn the other side, Dhrishtadyumna led the Pandava army the whole time."
+        },
+        {
+          "kind": "case_study",
+          "title": "Day 10: Bhishma falls",
+          "body": "Bhishma is nearly unstoppable, and his power over his own death means he can't simply be killed. He tells the Pandavas he will not fight Shikhandi.\n\nOn day 10, Arjuna shoots from behind Shikhandi. Bhishma falls, pierced by so many arrows that he lies on a bed of them, choosing to live on until the sun turns north."
+        },
+        {
+          "kind": "case_study",
+          "title": "Day 13: Abhimanyu in the wheel",
+          "body": "Drona arranges his army in the chakravyuha, a spiral formation. Abhimanyu, Arjuna's teenage son, knows how to break in but not how to get out.\n\nHe forces his way in, the gap closes behind him, and he is surrounded and killed by several warriors at once. Arjuna avenges him the next day."
+        },
+        {
+          "kind": "case_study",
+          "title": "Day 14 night: Ghatotkacha",
+          "body": "Fighting continues into the night, when Bhima's son Ghatotkacha and his rakshasa powers wreak havoc on the Kauravas.\n\nDesperate, Karna uses the one-time weapon Indra gave him, which he had been saving for Arjuna. It kills Ghatotkacha, and Arjuna is now safe from it."
+        },
+        {
+          "kind": "case_study",
+          "title": "Day 15: \"Ashwatthama is dead\"",
+          "body": "To stop Drona, Bhima kills an elephant named Ashwatthama and announces it. Drona asks Yudhishthira, who never lies, if it's true.\n\nYudhishthira says Ashwatthama is dead, adding only quietly that it was an elephant. Grief-stricken, Drona lays down his weapons and Dhrishtadyumna kills him."
+        },
+        {
+          "kind": "case_study",
+          "title": "Day 17: Karna's last fight",
+          "body": "Karna and Arjuna finally meet in their great duel. During the fight, Karna's chariot wheel sinks into the earth and he steps down to free it.\n\nWhen Karna appeals to the rules of fair combat, Krishna reminds him of Draupadi's humiliation and Abhimanyu's death, which Karna took part in. Arjuna shoots, and Karna falls."
+        },
+        {
+          "kind": "case_study",
+          "title": "Day 18 and after",
+          "body": "Shakuni and Shalya are killed, and Duryodhana hides in a lake. In his final mace duel with Bhima, Bhima strikes his thigh, below the waist, fulfilling his old vow.\n\nThat night Ashwatthama raids the Pandava camp. Only a handful of warriors survive the war. Yudhishthira becomes king, at a terrible cost."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who led the Kaurava army for the first ten days?",
+          "options": ["Drona", "Karna", "Bhishma", "Duryodhana"],
+          "correct_index": 2,
+          "explanation": "Bhishma led until he fell on day 10."
+        },
+        {
+          "question": "How did the Pandavas get past Bhishma?",
+          "options": [
+            "They poisoned his food",
+            "Arjuna shot from behind Shikhandi, whom Bhishma would not fight",
+            "Krishna fought him directly",
+            "He surrendered"
+          ],
+          "correct_index": 1,
+          "explanation": "Bhishma had said he would not fight Shikhandi."
+        },
+        {
+          "question": "What trapped Abhimanyu?",
+          "options": [
+            "A flood",
+            "The chakravyuha formation, which he could enter but not exit",
+            "A curse from Drona",
+            "Karna's divine weapon"
+          ],
+          "correct_index": 1,
+          "explanation": "He knew how to break in but not how to get out."
+        },
+        {
+          "question": "Why did Drona lay down his weapons?",
+          "options": [
+            "He was told his son Ashwatthama was dead",
+            "Duryodhana ordered him to",
+            "Krishna asked him to",
+            "He was wounded by Arjuna"
+          ],
+          "correct_index": 0,
+          "explanation": "An elephant named Ashwatthama had been killed, and Yudhishthira's answer let Drona believe it was his son."
+        },
+        {
+          "question": "Whom did Karna use Indra's one-time weapon on?",
+          "options": ["Arjuna", "Ghatotkacha", "Bhima", "Abhimanyu"],
+          "correct_index": 1,
+          "explanation": "He was forced to use it on Ghatotkacha, which left Arjuna safe from it."
+        }
+      ]
+    }
+  ]
+}
