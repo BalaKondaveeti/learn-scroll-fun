@@ -1,0 +1,395 @@
+{
+  "chapter": {
+    "slug": "krishnas-teachings",
+    "title": "What Krishna Teaches",
+    "description": "The Bhagavad Gita's ideas on work, the mind, decisions and loss, in plain words, with the verse each one comes from.",
+    "emoji": "🦚",
+    "color": "#4f46e5",
+    "sort_order": 9
+  },
+  "parts": [
+    {
+      "slug": "do-your-work",
+      "title": "Do your work, let go of the result",
+      "description": "Karma yoga: acting fully without being ruled by the outcome.",
+      "emoji": "🎯",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Your right is to the work",
+          "body": "The Gita's most famous line (2.47): you have a right to your actions, but never to their fruits. Don't make the result your reason for acting, and don't let that turn you toward doing nothing either.\n\nIt isn't saying results don't matter. It's saying your effort is the part you control, so put yourself there.",
+          "deep_dive": "In Sanskrit it begins *karmany evadhikaras te, ma phaleshu kadachana*. The verse has four parts: your right is to action; never to its fruits; don't let the fruit be your motive; and don't be attached to inaction. That last part matters. The Gita is not advice to stop caring and stop trying. It's advice to give full effort while loosening your grip on how it turns out, so fear of failure doesn't freeze you and success doesn't swell you."
+        },
+        {
+          "kind": "concept",
+          "title": "Steady in success and failure",
+          "body": "In the next verse (2.48), Krishna tells Arjuna to act while staying even-minded about success and failure, abandoning attachment.\n\nHe defines yoga itself this way: *samatvam yoga uchyate*, evenness of mind is called yoga. You still want to win. You just don't let winning or losing knock you off balance."
+        },
+        {
+          "kind": "concept",
+          "title": "Yoga is skill in action",
+          "body": "Verse 2.50 gives another short definition: *yogah karmasu kaushalam*, yoga is skill in action.\n\nHere yoga isn't about postures. It means doing your work with focus and care, from a steady mind, so the work itself becomes a practice."
+        },
+        {
+          "kind": "concept",
+          "title": "Doing nothing isn't an escape",
+          "body": "Arjuna wants to walk away from the battle. Krishna tells him (3.8) to do his prescribed work, because action is better than inaction. Even keeping your own body alive needs action.\n\nFor anyone stuck: withdrawing doesn't free you from the problem. Doing the right next thing does."
+        },
+        {
+          "kind": "concept",
+          "title": "Your own path, even imperfectly",
+          "body": "Verse 3.35 says it is better to follow your own duty, even imperfectly, than someone else's done well.\n\nThe idea is called svadharma, your own role and nature. Copying someone else's life, however impressive it looks, tends to go worse than living your own honestly."
+        },
+        {
+          "kind": "concept",
+          "title": "People copy what you do",
+          "body": "In 3.21, Krishna points out that whatever a great person does, others follow. The standard they set by example is the one the world takes up.\n\nIf you lead a team, raise kids, or are simply looked up to by someone, your actions teach more than your words."
+        },
+        {
+          "kind": "what_would_you_do",
+          "title": "You did everything right and still lost",
+          "body": "You worked hard for months on a project. It went well, but the promotion went to someone else.\n\nYou're tempted to stop trying so hard, since effort clearly didn't pay. What would the Gita say?",
+          "deep_dive": "Verse 2.47 would say the effort was yours and the result never was. Verse 2.48 would ask you to stay steady in the loss as you would in a win. And 3.8 would warn against swinging to the other extreme, doing less, because that just trades one attachment for another. The practical move: keep doing excellent work because it's your work, learn what you can from the decision, and let the outcome go."
+        }
+      ],
+      "questions": [
+        {
+          "question": "According to Gita 2.47, what do you have a right to?",
+          "options": ["The results of your work", "Your actions, not their fruits", "Neither actions nor results", "Only success"],
+          "correct_index": 1,
+          "explanation": "Your right is to the action. The result is not yours to control."
+        },
+        {
+          "question": "Does 2.47 tell you to stop acting since results aren't yours?",
+          "options": [
+            "Yes, withdraw from action",
+            "No, it also says don't be attached to inaction",
+            "Only if you might fail",
+            "It doesn't mention inaction"
+          ],
+          "correct_index": 1,
+          "explanation": "The verse ends by warning against attachment to doing nothing."
+        },
+        {
+          "question": "How does the Gita define yoga in 2.48?",
+          "options": ["Physical postures", "Evenness of mind", "Giving up all work", "Long meditation"],
+          "correct_index": 1,
+          "explanation": "Samatvam yoga uchyate: evenness of mind is called yoga."
+        },
+        {
+          "question": "What does svadharma (3.35) mean?",
+          "options": [
+            "Doing whatever earns the most",
+            "Following your own duty and nature, even imperfectly",
+            "Copying successful people",
+            "Avoiding all duties"
+          ],
+          "correct_index": 1,
+          "explanation": "Better your own path imperfectly than another's done well."
+        },
+        {
+          "question": "What is the point of 3.21?",
+          "options": [
+            "Leaders should hide their actions",
+            "Others follow the example set by those they look up to",
+            "Only words matter",
+            "Great people need no rules"
+          ],
+          "correct_index": 1,
+          "explanation": "Whatever a great person does, others follow."
+        }
+      ]
+    },
+    {
+      "slug": "master-your-mind",
+      "title": "Master your mind",
+      "description": "The mind as friend or enemy, how desire turns to ruin, and how to steady it.",
+      "emoji": "🧠",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Lift yourself up",
+          "body": "Verse 6.5: raise yourself by your own self, and don't let yourself sink. You alone are your own friend, and you alone can be your own enemy.\n\nNo one else can do your inner work for you. The same mind that drags you down is the one that can pull you up."
+        },
+        {
+          "kind": "concept",
+          "title": "Friend or enemy",
+          "body": "The following verse (6.6) explains: for someone who has mastered their mind, the mind is their best friend. For someone who hasn't, it behaves like an enemy.\n\nThe mind doesn't change sides by itself. Training it is what turns it from a critic into an ally."
+        },
+        {
+          "kind": "concept",
+          "title": "How a thought becomes ruin",
+          "body": "Verses 2.62 and 2.63 trace a chain:\n\n1. Dwelling on something creates attachment.\n2. Attachment creates desire.\n3. Desire gives rise to anger.\n4. Anger brings delusion, then loss of memory and judgment.\n5. Lost judgment leads to ruin.\n\nThe easiest place to break the chain is at the start, at what you keep dwelling on."
+        },
+        {
+          "kind": "fact",
+          "title": "Three gates",
+          "body": "In 16.21, Krishna names three gates that lead a person to self-destruction: desire, anger and greed (*kama, krodha, lobha*).\n\nHis advice is simple: give up these three. Most bad decisions you regret can probably be traced through one of them."
+        },
+        {
+          "kind": "concept",
+          "title": "The restless mind",
+          "body": "Arjuna admits (6.34) that the mind is restless and stubborn, as hard to control as the wind. Krishna doesn't argue. He agrees it is hard.\n\nThen (6.35) he gives the method: *abhyasa* and *vairagya*, steady practice and letting go. Not one big effort, but repeated small ones."
+        },
+        {
+          "kind": "concept",
+          "title": "Not too much, not too little",
+          "body": "Verses 6.16 and 6.17 say yoga isn't for someone who eats too much or too little, or sleeps too much or too little.\n\nIt's for someone balanced in eating, rest, work and recreation. Extremes in either direction pull the mind off center."
+        },
+        {
+          "kind": "concept",
+          "title": "This too will pass",
+          "body": "In 2.14, Krishna says that heat and cold, pleasure and pain come from the senses meeting the world. They come and go and don't last.\n\nHis advice is *titikshasva*: bear them patiently. A hard feeling is real, but it's also temporary."
+        }
+      ],
+      "questions": [
+        {
+          "question": "According to 6.5, who can raise you up?",
+          "options": ["Only a teacher", "Only luck", "You yourself", "No one"],
+          "correct_index": 2,
+          "explanation": "Raise yourself by yourself; you are your own friend and your own enemy."
+        },
+        {
+          "question": "In 2.62 to 2.63, what does dwelling on something lead to first?",
+          "options": ["Anger", "Attachment", "Wisdom", "Peace"],
+          "correct_index": 1,
+          "explanation": "Dwelling creates attachment, then desire, anger, confusion and ruin."
+        },
+        {
+          "question": "What are the three gates in 16.21?",
+          "options": [
+            "Fear, doubt and laziness",
+            "Desire, anger and greed",
+            "Pride, envy and sloth",
+            "Hunger, thirst and sleep"
+          ],
+          "correct_index": 1,
+          "explanation": "Kama, krodha and lobha: desire, anger and greed."
+        },
+        {
+          "question": "How does Krishna say the restless mind can be controlled (6.35)?",
+          "options": [
+            "It can't be controlled",
+            "By practice and letting go",
+            "By avoiding all people",
+            "By force of will in one attempt"
+          ],
+          "correct_index": 1,
+          "explanation": "Abhyasa and vairagya: steady practice and detachment."
+        },
+        {
+          "question": "What does 6.16 to 6.17 recommend?",
+          "options": [
+            "Fasting and little sleep",
+            "Balance in eating, sleeping, work and rest",
+            "Eating and sleeping as much as possible",
+            "Working without rest"
+          ],
+          "correct_index": 1,
+          "explanation": "Yoga isn't for extremes in either direction."
+        }
+      ]
+    },
+    {
+      "slug": "making-decisions",
+      "title": "Making decisions",
+      "description": "How Arjuna goes from frozen to clear, and what the Gita says about choosing well.",
+      "emoji": "🧭",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Admit you're confused",
+          "body": "In 2.7, Arjuna says plainly that he is confused about what is right and his nature is overcome by weakness. He asks Krishna to tell him what is truly best.\n\nThe whole Gita starts from that moment of honesty. Admitting you don't know, and asking for help, is the first step to a good decision."
+        },
+        {
+          "kind": "concept",
+          "title": "Stand up",
+          "body": "Krishna's first response (2.3) is blunt: don't give in to this weakness, it doesn't suit you. Shake off this small faint-heartedness and stand up.\n\nBefore the philosophy comes a push. Sometimes the first thing a decision needs is for you to get up and face it."
+        },
+        {
+          "kind": "concept",
+          "title": "A clear mind sees what to do",
+          "body": "Verse 18.30 describes a clear (sattvic) intellect: it knows when to act and when to hold back, what should be done and what shouldn't, what to fear and what not to, and what binds and what frees.\n\nGood decisions come less from cleverness than from a mind calm enough to see these differences."
+        },
+        {
+          "kind": "concept",
+          "title": "Three kinds of action",
+          "body": "Verses 18.23 to 18.25 sort actions into three kinds:\n\n1. **Clear (sattvic)**: done because it's right, without craving the reward.\n2. **Driven (rajasic)**: done for desire or ego, with great strain.\n3. **Dark (tamasic)**: done from confusion, ignoring consequences and harm to others.\n\nA quick test before deciding: which kind is this?"
+        },
+        {
+          "kind": "concept",
+          "title": "Speak in a way that helps",
+          "body": "Verse 17.15 describes disciplined speech: words that don't cause needless distress, and that are truthful, pleasant and beneficial.\n\nWhen a decision involves a hard conversation, all four still apply. True isn't enough on its own; it should also help."
+        },
+        {
+          "kind": "fact",
+          "title": "Krishna hands the choice back",
+          "body": "After 17 chapters of teaching, Krishna says (18.63): I have told you this wisdom. Reflect on it fully, then do as you wish.\n\nHe doesn't order Arjuna. He gives him understanding and leaves the decision with him. The best guidance helps you choose; it doesn't choose for you."
+        },
+        {
+          "kind": "what_would_you_do",
+          "title": "Two good paths, one choice",
+          "body": "You have two good options. One is safe and expected. The other fits who you are but scares you.\n\nYou've been going back and forth for weeks and can't move. How might the Gita help?",
+          "deep_dive": "Start like Arjuna in 2.7: name the confusion and talk it through with someone you trust. Use 3.35 to ask which path is truly yours rather than the one that looks better on paper. Check the motive with 18.23 to 18.25: is it clear, driven by ego, or avoiding something? Then follow 18.63: reflect fully, and decide. Whichever you pick, 2.47 still applies: commit to the work and let go of guaranteeing the result."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Arjuna do in 2.7 that starts the teaching?",
+          "options": [
+            "He attacks the Kauravas",
+            "He admits he's confused and asks Krishna for guidance",
+            "He leaves the battlefield",
+            "He prays for victory"
+          ],
+          "correct_index": 1,
+          "explanation": "His honest admission of confusion opens the door to Krishna's teaching."
+        },
+        {
+          "question": "What is Krishna's first message to Arjuna in 2.3?",
+          "options": [
+            "Go home",
+            "Don't give in to weakness; stand up",
+            "Pray before you fight",
+            "Ask your elders"
+          ],
+          "correct_index": 1,
+          "explanation": "Shake off faint-heartedness and stand up."
+        },
+        {
+          "question": "What marks a sattvic (clear) action in 18.23?",
+          "options": [
+            "Done with great strain for fame",
+            "Done because it's right, without craving the reward",
+            "Done out of confusion",
+            "Done to harm a rival"
+          ],
+          "correct_index": 1,
+          "explanation": "Driven actions are rajasic; actions from confusion are tamasic."
+        },
+        {
+          "question": "What does Krishna say in 18.63?",
+          "options": [
+            "Obey me without question",
+            "Reflect on this fully, then do as you wish",
+            "Never decide alone",
+            "Let fate decide"
+          ],
+          "correct_index": 1,
+          "explanation": "He gives the understanding and leaves the choice to Arjuna."
+        },
+        {
+          "question": "According to 17.15, good speech is:",
+          "options": [
+            "Always blunt, whatever the cost",
+            "Truthful, pleasant, beneficial and not needlessly distressing",
+            "Pleasant even if untrue",
+            "As short as possible"
+          ],
+          "correct_index": 1,
+          "explanation": "All four together: true, kind, helpful and not causing needless distress."
+        }
+      ]
+    },
+    {
+      "slug": "facing-loss",
+      "title": "Facing loss and change",
+      "description": "What Krishna tells a grieving Arjuna about death, change and inner steadiness.",
+      "emoji": "🌅",
+      "cards": [
+        {
+          "kind": "concept",
+          "title": "Childhood, youth, old age",
+          "body": "Verse 2.13: just as the self passes through childhood, youth and old age in this body, it passes into another body. The wise aren't confused by this.\n\nYou are not the same body you were at five, yet you're still you. Krishna uses that everyday change to point at something deeper that continues."
+        },
+        {
+          "kind": "concept",
+          "title": "Never born, never dies",
+          "body": "Verse 2.20 describes the self, the atman: it is never born and never dies. It did not come into being and will not cease to be. It is not killed when the body is killed.\n\nThis is the Gita's central answer to Arjuna's grief: what is truly you doesn't end."
+        },
+        {
+          "kind": "concept",
+          "title": "Like changing clothes",
+          "body": "Verse 2.22 gives one of the Gita's best-known images: as a person throws off worn-out clothes and puts on new ones, the embodied self leaves worn-out bodies and takes on new ones.\n\nFor the Gita, death is a change of clothing, not an ending of the one who wears it."
+        },
+        {
+          "kind": "concept",
+          "title": "What is certain",
+          "body": "Verse 2.27: for one who is born, death is certain, and for one who dies, birth is certain. So don't grieve over what can't be avoided.\n\nIt isn't asking you to feel nothing. It's asking you not to fight what cannot change, so your energy goes to what can."
+        },
+        {
+          "kind": "concept",
+          "title": "Whenever goodness fades",
+          "body": "In 4.7 and 4.8, Krishna says that whenever dharma (righteousness) declines and adharma rises, he manifests himself, to protect the good and restore dharma, age after age.\n\nFor many readers, it's a promise that no dark period is the final word."
+        },
+        {
+          "kind": "concept",
+          "title": "The kind of person Krishna loves",
+          "body": "Verses 12.13 and 12.14 describe the devotee dear to Krishna: free of hatred toward anyone, friendly and compassionate, without ego or possessiveness, the same in pleasure and pain, forgiving, content and steady.\n\nRead as a checklist, it's a quiet picture of a good person."
+        },
+        {
+          "kind": "fact",
+          "title": "How it ends",
+          "body": "At the close of the Gita (18.73), Arjuna says his delusion is gone and his memory restored by Krishna's grace. His doubts are cleared, he stands firm, and he will do as Krishna says: *karishye vachanam tava*.\n\nThe man who sat down in despair stands up with clarity."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What image does 2.22 use for death?",
+          "options": [
+            "A candle going out",
+            "Throwing off worn-out clothes and putting on new ones",
+            "A river reaching the sea",
+            "A long sleep"
+          ],
+          "correct_index": 1,
+          "explanation": "The self leaves old bodies as a person changes worn clothes."
+        },
+        {
+          "question": "According to 2.20, the self (atman) is:",
+          "options": [
+            "Born with the body and dies with it",
+            "Never born and never dies",
+            "Created by good deeds",
+            "Only present in the wise"
+          ],
+          "correct_index": 1,
+          "explanation": "It is not killed when the body is killed."
+        },
+        {
+          "question": "What everyday example does 2.13 use?",
+          "options": [
+            "Day and night",
+            "Passing through childhood, youth and old age",
+            "Seasons of the year",
+            "Waves on the sea"
+          ],
+          "correct_index": 1,
+          "explanation": "The body changes, yet the same self continues."
+        },
+        {
+          "question": "What does 4.7 to 4.8 promise?",
+          "options": [
+            "Wealth to the faithful",
+            "That Krishna manifests whenever dharma declines, to restore it",
+            "An end to all suffering",
+            "Victory in every war"
+          ],
+          "correct_index": 1,
+          "explanation": "Age after age, to protect the good and restore righteousness."
+        },
+        {
+          "question": "How does Arjuna respond at the end, in 18.73?",
+          "options": [
+            "He still refuses to fight",
+            "His doubts are gone and he says he will act as Krishna says",
+            "He asks for more time",
+            "He gives the decision to Yudhishthira"
+          ],
+          "correct_index": 1,
+          "explanation": "Karishye vachanam tava: I will do as you say."
+        }
+      ]
+    }
+  ]
+}
