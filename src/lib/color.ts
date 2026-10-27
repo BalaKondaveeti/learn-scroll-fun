@@ -79,3 +79,25 @@ export function deep(hex: string) {
     `linear-gradient(180deg, ${hsl(h, sat, lightnessFor(h, sat, 8.5))} 0%, ${hsl(h2, sat - 10, lightnessFor(h2, sat - 10, 15))} 100%)`,
   ].join(', ')
 }
+
+// Full-screen card background. Even cards run light -> dark along the scroll axis and odd
+// cards run dark -> light, so where two cards meet they share the same shade and the
+// scroll reads as one continuous wash of the chapter's color.
+export function reel(hex: string, index: number, horizontal = false) {
+  const { h, s } = hexToHsl(hex)
+  const sat = Math.min(88, Math.max(60, s))
+  const hDark = (h - 30 + 360) % 360
+  const light = hsl(h, sat, lightnessFor(h, sat, 4.8))
+  const mid = hsl((h - 12 + 360) % 360, sat, lightnessFor((h - 12 + 360) % 360, sat, 7))
+  const dark = hsl(hDark, sat - 6, lightnessFor(hDark, sat - 6, 13))
+  const flip = index % 2 === 1
+  const angle = horizontal ? (flip ? 270 : 90) : (flip ? 0 : 180)
+  // A soft glow sits inside the light half, well clear of the edges, so it never breaks a seam.
+  const along = flip ? 68 : 32
+  const glowAt = horizontal ? `${along}% 50%` : `50% ${along}%`
+  const glow = hsl((h + 14) % 360, Math.min(95, sat + 6), Math.min(70, lightnessFor(h, sat, 4.8) + 14), 0.32)
+  return [
+    `radial-gradient(${horizontal ? '42% 60%' : '70% 34%'} at ${glowAt}, ${glow} 0%, transparent 72%)`,
+    `linear-gradient(${angle}deg, ${light} 0%, ${mid} 48%, ${dark} 100%)`,
+  ].join(', ')
+}

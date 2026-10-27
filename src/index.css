@@ -57,6 +57,27 @@ body {
 @keyframes sheet { from { transform: translateY(100%); } to { transform: none; } }
 @keyframes drift { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
 
+/* Card content rises in when its card becomes the one on screen. */
+[data-active] .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 420ms ease-out, transform 560ms cubic-bezier(.2, .9, .25, 1);
+  transition-delay: 0ms;
+}
+[data-active='true'] .reveal {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--d, 0ms);
+}
+
+@keyframes confetti {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(.6); }
+  12% { opacity: 1; transform: translate(calc(var(--x) * .55), calc(var(--y) * .2 - 70px)) rotate(calc(var(--r) * .3)) scale(1); }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  [data-active] .reveal { opacity: 1; transform: none; }
   *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
 }

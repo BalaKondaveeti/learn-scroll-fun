@@ -4,7 +4,7 @@ import { ArrowsHorizontal, ArrowsVertical, Book, ChevronUp, Play } from '../comp
 import { Markdown } from '../components/Markdown'
 import { Quiz } from '../components/Quiz'
 import { useUserId } from '../lib/authContext'
-import { deep, vivid } from '../lib/color'
+import { reel, vivid } from '../lib/color'
 import { getCards, getPartProgress, getQuestions, logAttempt, saveCardPosition, saveQuizResult } from '../lib/data'
 import type { Card, CardKind, Chapter, Part, PartProgress } from '../lib/types'
 import { getScrollDirection, saveScrollDirection, type ScrollDirection } from '../lib/prefs'
@@ -112,7 +112,7 @@ export default function Reels({ chapter, part, backTo }: Props) {
   return (
     <div className="fixed inset-0 overflow-hidden bg-black text-white">
       {/* Story-style header: segments, then who/what, then close. */}
-      <header className="pt-safe pointer-events-none absolute inset-x-0 top-0 z-20">
+      <header className="pt-safe pointer-events-none absolute inset-x-0 top-0 z-20 bg-gradient-to-b from-black/40 via-black/15 to-transparent pb-6">
         <div className="mx-auto max-w-xl px-3 pt-2">
           <div className="flex gap-1" aria-label={`Page ${index + 1} of ${pages}`}>
             {Array.from({ length: pages }, (_, i) => (
@@ -149,12 +149,11 @@ export default function Reels({ chapter, part, backTo }: Props) {
           className={`no-scrollbar h-full overscroll-contain ${horizontal ? 'flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden' : 'snap-y snap-mandatory overflow-y-auto'}`}
         >
           {cards.map((card, i) => (
-            <section key={card.id} data-index={i} className={`relative snap-start snap-always ${page}`} style={{ background: vivid(chapter.color, i) }}>
-              <div aria-hidden className="scrim absolute inset-0" />
+            <section key={card.id} data-index={i} data-active={i === index} className={`relative snap-start snap-always ${page}`} style={{ background: reel(chapter.color, i, horizontal) }}>
               <CardView card={card} onDeeper={() => setSheet(card)} />
             </section>
           ))}
-          <section data-index={cards.length} className={`relative snap-start snap-always ${page}`} style={{ background: deep(chapter.color) }}>
+          <section data-index={cards.length} data-active={index === cards.length} className={`relative snap-start snap-always ${page}`} style={{ background: reel(chapter.color, cards.length, horizontal) }}>
             <div className="no-scrollbar relative mx-auto flex h-full max-w-xl items-center overflow-y-auto px-5 pt-[calc(env(safe-area-inset-top)+92px)] pb-[calc(env(safe-area-inset-bottom)+28px)]">
               {questions.length > 0 ? (
                 <Quiz
@@ -205,17 +204,17 @@ function CardView({ card, onDeeper }: { card: Card; onDeeper: () => void }) {
   return (
     <div className="relative mx-auto flex h-full max-w-xl flex-col justify-center px-5 pt-[calc(env(safe-area-inset-top)+96px)] pb-[calc(env(safe-area-inset-bottom)+64px)]">
       <div className={`no-scrollbar max-h-full overflow-y-auto ${rail ? 'pr-16' : ''}`}>
-        <span className="inline-block rounded-full bg-white/18 px-3 py-1 text-[13px] font-semibold backdrop-blur-md">{KIND_LABEL[card.kind]}</span>
-        <h2 className={`font-display mt-4 font-extrabold text-balance [text-shadow:0_2px_20px_rgb(0_0_0/0.2)] ${isNumber ? 'text-[54px] leading-[0.95] tracking-[-0.045em]' : 'text-[34px] leading-[1.05] tracking-[-0.03em]'}`}>
+        <span className="reveal inline-block rounded-full bg-white/18 px-3 py-1 text-[13px] font-semibold backdrop-blur-md" style={{ ['--d' as string]: '0ms' }}>{KIND_LABEL[card.kind]}</span>
+        <h2 style={{ ['--d' as string]: '90ms' }} className={`reveal font-display mt-4 font-extrabold text-balance [text-shadow:0_2px_20px_rgb(0_0_0/0.2)] ${isNumber ? 'text-[54px] leading-[0.95] tracking-[-0.045em]' : 'text-[34px] leading-[1.05] tracking-[-0.03em]'}`}>
           {card.title}
         </h2>
-        <div className="mt-4 text-[20px] leading-[1.5] font-medium text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.25),0_2px_18px_rgb(0_0_0/0.22)]">
+        <div style={{ ['--d' as string]: '200ms' }} className="reveal mt-4 text-[20px] leading-[1.5] font-medium text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.25),0_2px_18px_rgb(0_0_0/0.22)]">
           <Markdown>{card.body}</Markdown>
         </div>
       </div>
 
       {rail && (
-        <div className="absolute right-3 bottom-[calc(env(safe-area-inset-bottom)+72px)] flex flex-col items-center gap-5">
+        <div style={{ ['--d' as string]: '320ms' }} className="reveal absolute right-3 bottom-[calc(env(safe-area-inset-bottom)+72px)] flex flex-col items-center gap-5">
           {card.deep_dive && (
             <button onClick={onDeeper} className="flex flex-col items-center gap-1 text-[12px] font-semibold active:scale-90">
               <span className="grid h-12 w-12 place-items-center rounded-full bg-black/25 backdrop-blur-md"><Book size={22} /></span>
