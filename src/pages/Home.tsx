@@ -1,11 +1,13 @@
+import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { ErrorNotice, Page, Spinner } from '../components/Bits'
-import { ChevronRight, Gear, Repeat } from '../components/Icons'
+import { ChevronRight, Gear, GridIcon, ListIcon, Repeat } from '../components/Icons'
 import { vivid } from '../lib/color'
 import { getChapters, getLastActiveChapter, getProgress, getReviewQuestions } from '../lib/data'
 import { useFromHere } from '../lib/nav'
+import { getHomeLayout, saveHomeLayout, type HomeLayout } from '../lib/prefs'
 import { getLocalLastChapter } from '../lib/recent'
-import type { Chapter } from '../lib/types'
+import type { Chapter, ProgressNode } from '../lib/types'
 import { useAsync } from '../lib/useAsync'
 
 // The chapter used most recently goes first (and gets the big tile); the rest keep their order.
@@ -21,6 +23,11 @@ export default function Home() {
   )
 
   const from = useFromHere()
+  const [layout, setLayout] = useState<HomeLayout>(getHomeLayout)
+  const chooseLayout = (l: HomeLayout) => {
+    saveHomeLayout(l)
+    setLayout(l)
+  }
   const [chapters, progress, review, serverLast] = data ?? [[], new Map(), [], null]
   const localLast = getLocalLastChapter()
   const last = [serverLast, localLast].filter((x) => x && chapters.some((c) => c.id === x.chapterId)).sort((a, b) => b!.at - a!.at)[0]
@@ -43,9 +50,12 @@ export default function Home() {
 
       {data && (
         <div className="px-4 pb-10">
-          <div className="flex items-end justify-between pt-3 pb-4">
-            <h1 className="font-display text-[28px] leading-tight font-bold tracking-[-0.025em]">{last ? 'Keep going' : 'Pick a chapter'}</h1>
-            {chapters.length > 0 && <span className="pb-1 text-[15px] font-medium text-[var(--muted)] tabular-nums">{Math.round(overall * 100)}% done</span>}
+          <div className="flex items-end justify-between gap-3 pt-3 pb-4">
+            <div>
+              <h1 className="font-display text-[28px] leading-tight font-bold tracking-[-0.025em]">{last ? 'Keep going' : 'Pick a chapter'}</h1>
+              {chapters.length > 0 && <p className="mt-0.5 text-[15px] font-medium text-[var(--muted)] tabular-nums">{Math.round(overall * 100)}% through everything</p>}
+            </div>
+            {chapters.length > 1 && <LayoutSwitch value={layout} onChange={chooseLayout} />}
           </div>
 
           {review.length > 0 && (
@@ -62,8 +72,9 @@ export default function Home() {
           {chapters.length === 0 ? (
             <p className="py-10 text-[var(--muted)]">No chapters yet. Run supabase/content/_all.sql in the Supabase SQL editor to add the starter content.</p>
           ) : (
+            <>
             <div className="grid grid-cols-2 gap-2.5">
-              {ordered.map((c, i) => {
+              {(layout === 'list' ? ordered.slice(0, 1) : ordered).map((c, i) => {
                 const p = progress.get(c.id)
                 const pct = Math.round((p?.progress ?? 0) * 100)
                 const wide = i === 0
@@ -88,9 +99,61 @@ export default function Home() {
                 )
               })}
             </div>
+            {layout === 'list' && ordered.length > 1 && (
+              <div className="mt-3 flex flex-col gap-1">
+                {ordered.slice(1).map((c) => (
+                  <ChapterRow key={c.id} chapter={c} node={progress.get(c.id)} from={from} />
+                ))}
+              </div>
+            )}
+            </>
           )}
         </div>
       )}
     </Page>
+  )
+}
+
+function LayoutSwitch({ value, onChange }: { value: HomeLayout; onChange: (l: HomeLayout) => void }) {
+  const btn = (l: HomeLayout, label: string, icon: ReactNode) => (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={value === l}
+      aria-label={label}
+      onClick={() => onChange(l)}
+      className={`grid h-8 w-9 place-items-center rounded-[10px] transition ${value === l ? 'bg-[var(--bg)] text-[var(--ink)] shadow-sm' : 'text-[var(--muted)]'}`}
+    >
+      {icon}
+    </button>
+  )
+  return (
+    <div role="radiogroup" aria-label="Chapter layout" className="mb-1 flex shrink-0 rounded-xl bg-[var(--raised)] p-1">
+      {btn('list', 'Show chapters as a list', <ListIcon />)}
+      {btn('tiles', 'Show chapters as tiles', <GridIcon />)}
+    </div>
+  )
+}
+
+function ChapterRow({ chapter: c, node, from }: { chapter: Chapter; node?: ProgressNode; from: { from?: string } }) {
+  const pct = Math.round((node?.progress ?? 0) * 100)
+  return (
+    <Link to={`/c/${c.slug}`} state={from} className="flex items-center gap-3.5 rounded-2xl px-1.5 py-2 transition active:scale-[0.98] active:bg-[var(--raised)]">
+      <span className="relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[16px] text-[28px]" style={{ background: vivid(c.color, c.sort_order, true) }} aria-hidden>
+        {c.emoji}
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-[17px] font-semibold tracking-[-0.01em]">{c.title}</span>
+        <span className="mt-1.5 flex items-center gap-2.5">
+          <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-[var(--raised)]">
+            <span className="block h-full rounded-full transition-[width] duration-700" style={{ width: `${pct}%`, background: c.color }} />
+          </span>
+          <span className="shrink-0 text-[13px] font-medium text-[var(--muted)] tabular-nums">
+            {pct > 0 ? `${pct}%` : `${node?.leaf_total ?? 0} parts`}
+          </span>
+        </span>
+      </span>
+      <span className="text-[var(--muted)]"><ChevronRight size={16} /></span>
+    </Link>
   )
 }

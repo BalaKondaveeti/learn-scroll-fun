@@ -4,7 +4,7 @@ import { Confirm } from '../components/Confirm'
 import { useAuth, useUserId } from '../lib/authContext'
 import { vivid } from '../lib/color'
 import { getChapters, getProgress, resetAllProgress, resetChapterProgress } from '../lib/data'
-import { getScrollDirection, saveScrollDirection, type ScrollDirection } from '../lib/prefs'
+import { getHomeLayout, getScrollDirection, saveHomeLayout, saveScrollDirection, type HomeLayout, type ScrollDirection } from '../lib/prefs'
 import { forgetLastChapter } from '../lib/recent'
 import { sb } from '../lib/supabase'
 import { applyTheme, getTheme, type Theme } from '../lib/theme'
@@ -19,6 +19,7 @@ export default function Settings() {
   const { data, error, reload } = useAsync(() => Promise.all([getChapters(), getProgress()]), [])
   const [theme, setTheme] = useState<Theme>(getTheme)
   const [direction, setDirection] = useState<ScrollDirection>(getScrollDirection)
+  const [layout, setLayout] = useState<HomeLayout>(getHomeLayout)
   const [pending, setPending] = useState<Pending | null>(null)
   const [notice, setNotice] = useState<string | null>(null)
 
@@ -42,6 +43,14 @@ export default function Settings() {
             value={theme}
             options={[{ value: 'dark', label: 'Dark' }, { value: 'light', label: 'Light' }]}
             onChange={(t) => { applyTheme(t); setTheme(t) }}
+          />
+        </Section>
+
+        <Section title="Home" hint="How chapters show below the top one. You can also switch this on Home.">
+          <Segmented
+            value={layout}
+            options={[{ value: 'list', label: 'List' }, { value: 'tiles', label: 'Tiles' }]}
+            onChange={(l) => { saveHomeLayout(l); setLayout(l) }}
           />
         </Section>
 
