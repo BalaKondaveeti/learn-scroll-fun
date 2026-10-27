@@ -1,16 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffb347"/><stop offset="1" stop-color="#ff5e7e"/>
-    </linearGradient>
-    <linearGradient id="b" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c6cff"/><stop offset="1" stop-color="#3fc8e4"/>
-    </linearGradient>
+    <radialGradient id="bg" cx="50%" cy="38%" r="72%"><stop offset="0" stop-color="#3b1060"/><stop offset=".55" stop-color="#14062a"/><stop offset="1" stop-color="#07020f"/></radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#ffd166"/><stop offset=".45" stop-color="#ff6b8b"/><stop offset="1" stop-color="#a855f7"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ff8fa3" stop-opacity=".5"/><stop offset=".6" stop-color="#ff8fa3" stop-opacity=".12"/><stop offset="1" stop-color="#ff8fa3" stop-opacity="0"/></radialGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
   </defs>
-  <rect width="512" height="512" rx="112" fill="#15122b"/>
-  <rect x="150" y="84" width="212" height="300" rx="40" fill="url(#b)" opacity=".55" transform="rotate(-9 256 234)"/>
-  <rect x="150" y="128" width="212" height="300" rx="40" fill="url(#a)"/>
-  <rect x="186" y="186" width="120" height="20" rx="10" fill="#15122b" opacity=".85"/>
-  <rect x="186" y="226" width="140" height="14" rx="7" fill="#15122b" opacity=".5"/>
-  <rect x="186" y="252" width="104" height="14" rx="7" fill="#15122b" opacity=".5"/>
+  <rect width="512" height="512" rx="114" fill="url(#bg)"/>
+  <g transform="translate(256 256) scale(1) translate(-256 -256)">
+    <circle cx="256" cy="214" r="215" fill="url(#glow)"/>
+    <g stroke="#ffd98a" stroke-width="16" stroke-linecap="round" opacity=".9">
+      <path d="M256 30 V52"/><path d="M114 86 L130 102"/><path d="M398 86 L382 102"/><path d="M60 214 H82"/><path d="M430 214 H452"/>
+    </g>
+    <path d="M256 82 C329 82 388 141 388 214 C388 262 362 296 338 320 C324 334 316 348 314 364 L198 364 C196 348 188 334 174 320 C150 296 124 262 124 214 C124 141 183 82 256 82 Z" fill="url(#glass)"/>
+    <path d="M190 128 C170 146 160 170 160 196" stroke="url(#shine)" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <path d="M206 250 L256 196 L306 250" stroke="#fff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M256 200 V340" stroke="#fff" stroke-width="26" stroke-linecap="round"/>
+    <rect x="196" y="378" width="120" height="26" rx="13" fill="#ece8ff"/>
+    <rect x="206" y="414" width="100" height="24" rx="12" fill="#cdc4f5"/>
+    <path d="M228 448 h56 a28 22 0 0 1 -56 0 Z" fill="#ab9fe8"/>
+  </g>
 </svg>

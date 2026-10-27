@@ -56,7 +56,7 @@ export default function Login() {
       <div aria-hidden className="scrim pointer-events-none absolute inset-0" />
       <div className="relative mx-auto flex min-h-full w-full max-w-md flex-col justify-end px-6 pt-16 pb-10">
         <div className="flex items-center gap-3">
-          <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-14 w-14 rounded-2xl shadow-lg" />
+          <img src={`${import.meta.env.BASE_URL}icon.svg?v=2`} alt="" className="h-14 w-14 rounded-2xl shadow-lg" />
           <span className="text-[20px] font-bold tracking-[-0.02em]">Scroll to Learn</span>
         </div>
         <h1 className="font-display mt-6 text-[48px] leading-[0.95] font-extrabold tracking-[-0.045em]">
