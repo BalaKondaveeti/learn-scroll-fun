@@ -55,6 +55,12 @@ npm run content:sql        # regenerate supabase/content/*.sql
 
 Then paste the generated `supabase/content/<file>.sql` (or `_all.sql` for everything) into the Supabase SQL Editor and run it. Re-running is safe: rows are matched by slug and position, so nothing is duplicated.
 
+### Adding content from any AI chat
+
+[CONTENT_PROMPT.md](CONTENT_PROMPT.md) is a starter message for a separate AI chat. Paste the whole file as the first message, then send it topics ("New chapter: Cooking", "Flesh out cars / exhaust", "New part in Mind: Habits"). It replies with one SQL block to paste into the SQL Editor, plus a short query to check what was added. Its SQL is safe to re-run, puts new parts at the end of their list, and stops with an error if a chapter or part slug is wrong.
+
+Content added this way lives only in the database, not in `content/`. After you've used the chat on a chapter, don't re-run that chapter's old file from `supabase/content/` (or `_all.sql`), because it would put the original stub versions back.
+
 ## Scripts
 
 | Command | What it does |
