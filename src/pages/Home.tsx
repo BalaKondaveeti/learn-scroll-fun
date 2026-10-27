@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { ErrorNotice, Page, Spinner } from '../components/Bits'
-import { ChevronRight, Gear, GridIcon, ListIcon, Repeat } from '../components/Icons'
+import { ChevronRight, Gear, GridIcon, ListIcon, Play, Repeat } from '../components/Icons'
 import { vivid } from '../lib/color'
 import { getChapters, getLastActiveChapter, getProgress, getReviewQuestions } from '../lib/data'
 import { useFromHere } from '../lib/nav'
@@ -32,6 +32,9 @@ export default function Home() {
   const localLast = getLocalLastChapter()
   const last = [serverLast, localLast].filter((x) => x && chapters.some((c) => c.id === x.chapterId)).sort((a, b) => b!.at - a!.at)[0]
   const ordered = orderChapters(chapters, last?.chapterId ?? null)
+  // Resume the server-side last part if it belongs to the chapter on top (even if the chapter was opened more recently).
+  const resumePart = serverLast && serverLast.chapterId === last?.chapterId ? serverLast.part : undefined
+  const resume = resumePart && !progress.get(resumePart.id)?.completed ? resumePart : undefined
   const overall = chapters.length ? chapters.reduce((sum, c) => sum + (progress.get(c.id)?.progress ?? 0), 0) / chapters.length : 0
 
   return (
@@ -73,33 +76,16 @@ export default function Home() {
             <p className="py-10 text-[var(--muted)]">No chapters yet. Run supabase/content/_all.sql in the Supabase SQL editor to add the starter content.</p>
           ) : (
             <>
-            <div className="grid grid-cols-2 gap-2.5">
-              {(layout === 'list' ? ordered.slice(0, 1) : ordered).map((c, i) => {
-                const p = progress.get(c.id)
-                const pct = Math.round((p?.progress ?? 0) * 100)
-                const wide = i === 0
-                const isLast = c.id === last?.chapterId
-                return (
-                  <Link key={c.id} to={`/c/${c.slug}`} state={from}
-                    className={`relative overflow-hidden rounded-[22px] text-white transition active:scale-[0.97] ${wide ? 'col-span-2 aspect-[16/10]' : 'aspect-[3/4]'}`}
-                    style={{ background: vivid(c.color, c.sort_order, true) }}>
-                    <div aria-hidden className="scrim absolute inset-0" />
-                    <span className={`absolute top-3.5 left-3.5 ${wide ? 'text-[52px]' : 'text-[44px]'}`} aria-hidden>{c.emoji}</span>
-                    <div className="absolute top-3.5 right-3.5 flex gap-1.5">
-                      {isLast && <span className="rounded-full bg-white px-2.5 py-1 text-[12px] font-bold text-black">Continue</span>}
-                      {pct > 0 && <span className="rounded-full bg-black/30 px-2.5 py-1 text-[12px] font-semibold backdrop-blur-md tabular-nums">{pct}%</span>}
-                    </div>
-                    <div className="absolute inset-x-3.5 bottom-4 [text-shadow:0_1px_14px_rgb(0_0_0/0.25)]">
-                      <h2 className={`font-display leading-[1.02] font-extrabold tracking-[-0.03em] text-balance ${wide ? 'text-[30px]' : 'text-[21px]'}`}>{c.title}</h2>
-                      {wide && c.description && <p className="mt-1.5 line-clamp-2 max-w-[92%] text-[15px] leading-snug text-white">{c.description}</p>}
-                      <p className="mt-1 text-[13px] font-medium text-white/85">{p?.leaf_total ?? 0} parts</p>
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 h-[3px] bg-white/20"><div className="h-full bg-white transition-[width] duration-700" style={{ width: `${pct}%` }} /></div>
-                  </Link>
-                )
-              })}
-            </div>
-            {layout === 'list' && ordered.length > 1 && (
+            <ChapterTile chapter={ordered[0]} node={progress.get(ordered[0].id)} wide isLast={ordered[0].id === last?.chapterId} from={from} />
+            {resume && <ResumeBar chapter={ordered[0]} part={resume} pct={Math.round((progress.get(resume.id)?.progress ?? 0) * 100)} from={from} />}
+            {ordered.length > 1 && layout === 'tiles' && (
+              <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+                {ordered.slice(1).map((c) => (
+                  <ChapterTile key={c.id} chapter={c} node={progress.get(c.id)} from={from} />
+                ))}
+              </div>
+            )}
+            {ordered.length > 1 && layout === 'list' && (
               <div className="mt-3 flex flex-col gap-1">
                 {ordered.slice(1).map((c) => (
                   <ChapterRow key={c.id} chapter={c} node={progress.get(c.id)} from={from} />
@@ -154,6 +140,45 @@ function ChapterRow({ chapter: c, node, from }: { chapter: Chapter; node?: Progr
         </span>
       </span>
       <span className="text-[var(--muted)]"><ChevronRight size={16} /></span>
+    </Link>
+  )
+}
+
+function ChapterTile({ chapter: c, node, wide = false, isLast = false, from }: { chapter: Chapter; node?: ProgressNode; wide?: boolean; isLast?: boolean; from: { from?: string } }) {
+  const pct = Math.round((node?.progress ?? 0) * 100)
+  return (
+    <Link to={`/c/${c.slug}`} state={from}
+      className={`relative block overflow-hidden rounded-[22px] text-white transition active:scale-[0.97] ${wide ? 'aspect-[16/10]' : 'aspect-[3/4]'}`}
+      style={{ background: vivid(c.color, c.sort_order, true) }}>
+      <div aria-hidden className="scrim absolute inset-0" />
+      <span className={`absolute top-3.5 left-3.5 ${wide ? 'text-[52px]' : 'text-[44px]'}`} aria-hidden>{c.emoji}</span>
+      <div className="absolute top-3.5 right-3.5 flex gap-1.5">
+        {isLast && <span className="rounded-full bg-white px-2.5 py-1 text-[12px] font-bold text-black">Continue</span>}
+        {pct > 0 && <span className="rounded-full bg-black/30 px-2.5 py-1 text-[12px] font-semibold backdrop-blur-md tabular-nums">{pct}%</span>}
+      </div>
+      <div className="absolute inset-x-3.5 bottom-4 [text-shadow:0_1px_14px_rgb(0_0_0/0.25)]">
+        <h2 className={`font-display leading-[1.02] font-extrabold tracking-[-0.03em] text-balance ${wide ? 'text-[30px]' : 'text-[21px]'}`}>{c.title}</h2>
+        {wide && c.description && <p className="mt-1.5 line-clamp-2 max-w-[92%] text-[15px] leading-snug text-white">{c.description}</p>}
+        <p className="mt-1 text-[13px] font-medium text-white/85">{node?.leaf_total ?? 0} parts</p>
+      </div>
+      <div className="absolute inset-x-0 bottom-0 h-[3px] bg-white/20"><div className="h-full bg-white transition-[width] duration-700" style={{ width: `${pct}%` }} /></div>
+    </Link>
+  )
+}
+
+// Jumps straight back into the lesson in progress, landing on the saved card.
+function ResumeBar({ chapter: c, part, pct, from }: { chapter: Chapter; part: { slug: string; title: string; emoji: string }; pct: number; from: { from?: string } }) {
+  return (
+    <Link to={`/c/${c.slug}/p/${part.slug}`} state={from}
+      className="mt-2 flex items-center gap-3 rounded-2xl bg-[var(--raised)] p-2.5 pr-4 transition active:scale-[0.98]">
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-white shadow-md" style={{ background: vivid(c.color, c.sort_order, true) }}>
+        <Play size={18} />
+      </span>
+      <span className="min-w-0 flex-1 leading-tight">
+        <span className="block text-[13px] font-semibold text-[var(--muted)]">Resume where you left off</span>
+        <span className="mt-0.5 block truncate text-[16px] font-semibold">{part.emoji} {part.title}</span>
+      </span>
+      {pct > 0 && <span className="shrink-0 text-[14px] font-semibold text-[var(--muted)] tabular-nums">{pct}%</span>}
     </Link>
   )
 }

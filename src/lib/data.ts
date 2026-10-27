@@ -100,15 +100,19 @@ export async function getReviewQuestions(limit = 10) {
 }
 
 // The chapter of the most recently updated progress row (works across devices).
-export async function getLastActiveChapter(): Promise<{ chapterId: string; at: number } | null> {
+export type LastActive = { chapterId: string; at: number; part?: { id: string; slug: string; title: string; emoji: string } }
+
+// The most recently updated progress row (works across devices), with the part it belongs to.
+export async function getLastActiveChapter(): Promise<LastActive | null> {
   const rows = unwrap<{ part_id: string; updated_at: string }[]>(
     await sb().from('ls_part_progress').select('part_id,updated_at').order('updated_at', { ascending: false }).limit(1),
   )
   if (!rows.length) return null
-  const part = unwrap<{ chapter_id: string } | null>(
-    await sb().from('ls_parts').select('chapter_id').eq('id', rows[0].part_id).maybeSingle(),
+  const part = unwrap<{ id: string; chapter_id: string; slug: string; title: string; emoji: string } | null>(
+    await sb().from('ls_parts').select('id,chapter_id,slug,title,emoji').eq('id', rows[0].part_id).maybeSingle(),
   )
-  return part ? { chapterId: part.chapter_id, at: Date.parse(rows[0].updated_at) } : null
+  if (!part) return null
+  return { chapterId: part.chapter_id, at: Date.parse(rows[0].updated_at), part: { id: part.id, slug: part.slug, title: part.title, emoji: part.emoji } }
 }
 
 export async function resetAllProgress(userId: string) {
