@@ -1,14 +1,16 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { useGoBack } from '../lib/nav'
 import { ChevronLeft, Close } from './Icons'
 
+// Goes back to `to` (the parent screen) by stepping back through history when possible.
 // "glass" sits on full-bleed color; "plain" sits on the black/white app background.
 export function IconLink({ to, label, variant = 'glass', icon = 'back' }: { to: string; label: string; variant?: 'glass' | 'plain'; icon?: 'back' | 'close' }) {
+  const goBack = useGoBack(to)
   const look = variant === 'glass' ? 'bg-black/25 text-white backdrop-blur-md' : 'bg-[var(--raised)] text-[var(--ink)]'
   return (
-    <Link to={to} aria-label={label} className={`grid h-10 w-10 shrink-0 place-items-center rounded-full transition active:scale-90 ${look}`}>
+    <button type="button" onClick={goBack} aria-label={label} className={`grid h-10 w-10 shrink-0 place-items-center rounded-full transition active:scale-90 ${look}`}>
       {icon === 'back' ? <ChevronLeft /> : <Close size={20} />}
-    </Link>
+    </button>
   )
 }
 

@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { ErrorNotice, IconLink, Spinner } from '../components/Bits'
 import { ArrowsHorizontal, ArrowsVertical, Book, ChevronUp, Play } from '../components/Icons'
 import { Markdown } from '../components/Markdown'
@@ -9,6 +8,7 @@ import { deep, vivid } from '../lib/color'
 import { getCards, getPartProgress, getQuestions, logAttempt, saveCardPosition, saveQuizResult } from '../lib/data'
 import type { Card, CardKind, Chapter, Part, PartProgress } from '../lib/types'
 import { getScrollDirection, saveScrollDirection, type ScrollDirection } from '../lib/prefs'
+import { useGoBack } from '../lib/nav'
 import { useAsync } from '../lib/useAsync'
 
 const KIND_LABEL: Record<CardKind, string> = {
@@ -23,7 +23,7 @@ type Props = { chapter: Chapter; part: Part; backTo: string }
 
 export default function Reels({ chapter, part, backTo }: Props) {
   const userId = useUserId()
-  const navigate = useNavigate()
+  const goBack = useGoBack(backTo)
   const { data, error, reload } = useAsync(
     () => Promise.all([getCards(part.id), getQuestions(part.id), getPartProgress(part.id)]),
     [part.id],
@@ -168,14 +168,14 @@ export default function Reels({ chapter, part, backTo }: Props) {
                       /* score still shown; it saves again on the next attempt */
                     }
                   }}
-                  onExit={() => navigate(backTo)}
+                  onExit={goBack}
                 />
               ) : (
                 <div className="w-full text-center">
                   <p className="text-6xl" aria-hidden>{part.emoji}</p>
                   <h2 className="font-display mt-5 text-[34px] font-extrabold tracking-[-0.03em]">That's this part.</h2>
                   <p className="mt-2 text-[17px] text-white/80">More cards and a quiz are coming here.</p>
-                  <button onClick={() => navigate(backTo)} className="mt-8 w-full rounded-full bg-white px-5 py-4 text-[17px] font-semibold text-black active:scale-[0.97]">
+                  <button onClick={goBack} className="mt-8 w-full rounded-full bg-white px-5 py-4 text-[17px] font-semibold text-black active:scale-[0.97]">
                     Back to parts
                   </button>
                 </div>

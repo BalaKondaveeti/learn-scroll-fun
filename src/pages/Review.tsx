@@ -1,15 +1,15 @@
-import { useNavigate } from 'react-router-dom'
 import { ErrorNotice, IconLink, Spinner } from '../components/Bits'
 import { Quiz } from '../components/Quiz'
 import { useUserId } from '../lib/authContext'
 import { deep } from '../lib/color'
 import { getReviewQuestions, logAttempt } from '../lib/data'
+import { useGoBack } from '../lib/nav'
 import { useAsync } from '../lib/useAsync'
 
 // Questions whose latest answer was wrong. Answering one correctly here drops it from the list.
 export default function Review() {
   const userId = useUserId()
-  const navigate = useNavigate()
+  const goBack = useGoBack('/')
   const { data, error, reload } = useAsync(() => getReviewQuestions(10), [])
 
   return (
@@ -27,7 +27,7 @@ export default function Review() {
           {!data && !error && <div className="w-full"><Spinner light /></div>}
           {data && data.length === 0 && <p className="w-full text-center text-[19px] text-white/85">Nothing to review. Missed questions show up here after a quiz.</p>}
           {data && data.length > 0 && (
-            <Quiz questions={data} onAnswer={(q, correct) => void logAttempt(userId, q.id, correct).catch(() => {})} onFinish={() => {}} onExit={() => navigate('/')} exitLabel="Back home" />
+            <Quiz questions={data} onAnswer={(q, correct) => void logAttempt(userId, q.id, correct).catch(() => {})} onFinish={() => {}} onExit={goBack} exitLabel="Back home" />
           )}
         </div>
       </div>

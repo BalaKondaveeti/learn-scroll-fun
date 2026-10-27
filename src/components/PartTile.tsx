@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom'
 import { vivid } from '../lib/color'
+import { useFromHere } from '../lib/nav'
 import type { Part, ProgressNode } from '../lib/types'
 import { Check, ChevronRight } from './Icons'
 
 type Props = { part: Part; to: string; color: string; variant: number; node?: ProgressNode; childCount: number }
 
 export function PartTile({ part, to, color, variant, node, childCount }: Props) {
+  const from = useFromHere()
   const progress = node?.progress ?? 0
   const done = node?.completed ?? false
   const score = childCount === 0 && node?.best_score != null && node.total_questions ? `${node.best_score}/${node.total_questions}` : null
   const status = score ?? (childCount > 0 ? `${childCount} parts` : progress > 0 ? 'Started' : 'New')
   return (
-    <Link to={to} className="flex items-center gap-3.5 rounded-2xl px-2 py-2.5 transition active:scale-[0.98] active:bg-[var(--raised)]">
+    <Link to={to} state={from} className="flex items-center gap-3.5 rounded-2xl px-2 py-2.5 transition active:scale-[0.98] active:bg-[var(--raised)]">
       <div className="relative grid h-[68px] w-[56px] shrink-0 place-items-center overflow-hidden rounded-[14px] text-[26px]" style={{ background: vivid(color, variant, true) }} aria-hidden>
         {part.emoji}
         {progress > 0 && (

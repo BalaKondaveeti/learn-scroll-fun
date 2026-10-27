@@ -3,6 +3,7 @@ import { ErrorNotice, Page, Spinner } from '../components/Bits'
 import { ChevronRight, Gear, Repeat } from '../components/Icons'
 import { vivid } from '../lib/color'
 import { getChapters, getLastActiveChapter, getProgress, getReviewQuestions } from '../lib/data'
+import { useFromHere } from '../lib/nav'
 import { getLocalLastChapter } from '../lib/recent'
 import type { Chapter } from '../lib/types'
 import { useAsync } from '../lib/useAsync'
@@ -19,6 +20,7 @@ export default function Home() {
     [],
   )
 
+  const from = useFromHere()
   const [chapters, progress, review, serverLast] = data ?? [[], new Map(), [], null]
   const localLast = getLocalLastChapter()
   const last = [serverLast, localLast].filter((x) => x && chapters.some((c) => c.id === x.chapterId)).sort((a, b) => b!.at - a!.at)[0]
@@ -30,7 +32,7 @@ export default function Home() {
       <header className="pt-safe sticky top-0 z-10 bg-[var(--bg)]/85 backdrop-blur-xl">
         <div className="flex items-center justify-between px-4 py-3">
           <span className="font-display text-[23px] font-extrabold tracking-[-0.03em]">Scroll to Learn</span>
-          <Link to="/settings" aria-label="Settings" className="grid h-10 w-10 place-items-center rounded-full bg-[var(--raised)] text-[var(--ink)] transition active:scale-90">
+          <Link to="/settings" state={from} aria-label="Settings" className="grid h-10 w-10 place-items-center rounded-full bg-[var(--raised)] text-[var(--ink)] transition active:scale-90">
             <Gear />
           </Link>
         </div>
@@ -47,7 +49,7 @@ export default function Home() {
           </div>
 
           {review.length > 0 && (
-            <Link to="/review" className="mb-4 flex items-center gap-3 rounded-2xl p-3 pr-4 text-white transition active:scale-[0.98]" style={{ background: vivid('#f43f5e', 2) }}>
+            <Link to="/review" state={from} className="mb-4 flex items-center gap-3 rounded-2xl p-3 pr-4 text-white transition active:scale-[0.98]" style={{ background: vivid('#f43f5e', 2) }}>
               <span className="grid h-11 w-11 place-items-center rounded-full bg-white/20"><Repeat /></span>
               <span className="flex-1 leading-tight">
                 <span className="block text-[17px] font-semibold">Review</span>
@@ -67,7 +69,7 @@ export default function Home() {
                 const wide = i === 0
                 const isLast = c.id === last?.chapterId
                 return (
-                  <Link key={c.id} to={`/c/${c.slug}`}
+                  <Link key={c.id} to={`/c/${c.slug}`} state={from}
                     className={`relative overflow-hidden rounded-[22px] text-white transition active:scale-[0.97] ${wide ? 'col-span-2 aspect-[16/10]' : 'aspect-[3/4]'}`}
                     style={{ background: vivid(c.color, c.sort_order, true) }}>
                     <div aria-hidden className="scrim absolute inset-0" />
