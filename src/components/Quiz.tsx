@@ -52,7 +52,8 @@ export function Quiz({ questions, best, onAnswer, onFinish, onExit, exitLabel = 
   if (finished) {
     const bestShown = Math.max(best ?? 0, score)
     return (
-      <div className="flex w-full flex-col items-center text-center text-white">
+      <div className="relative flex w-full flex-col items-center text-center text-white">
+        {score >= total * 0.6 && <Confetti big={score === total} />}
         <p className="text-[15px] font-semibold text-white/75">Quiz complete</p>
         <p className="font-display mt-2 text-[96px] leading-none font-extrabold tracking-[-0.04em] tabular-nums animate-[pop_500ms_ease-out]">
           {score}<span className="text-white/45">/{total}</span>
@@ -122,5 +123,37 @@ function Sparkle() {
         <span key={i} className="absolute h-1.5 w-1.5 rounded-full bg-emerald-500 animate-[burst_650ms_ease-out_forwards]" style={{ ['--a' as string]: `${i * 45}deg` }} />
       ))}
     </span>
+  )
+}
+
+const CONFETTI_COLORS = ['#ffd166', '#ff6b8b', '#a855f7', '#5eead4', '#ffffff', '#60a5fa']
+
+// A one-off burst from behind the score. Positions are seeded so every render is the same.
+function Confetti({ big }: { big: boolean }) {
+  const n = big ? 60 : 36
+  return (
+    <div aria-hidden className="pointer-events-none absolute top-28 left-1/2 z-10 h-0 w-0">
+      {Array.from({ length: n }, (_, i) => {
+        const angle = (i / n) * Math.PI * 2 + ((i * 37) % 10) / 10
+        const dist = 130 + ((i * 53) % 110) * (big ? 1.3 : 1)
+        const x = Math.cos(angle) * dist
+        const y = Math.sin(angle) * dist * 0.6 + 260
+        return (
+          <span
+            key={i}
+            className="absolute block rounded-[2px]"
+            style={{
+              width: i % 3 ? 9 : 13,
+              height: i % 3 ? 15 : 8,
+              background: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+              animation: `confetti ${1700 + ((i * 29) % 700)}ms cubic-bezier(.2,.6,.4,1) ${120 + (i % 6) * 30}ms both`,
+              ['--x' as string]: `${x}px`,
+              ['--y' as string]: `${y}px`,
+              ['--r' as string]: `${(i % 2 ? 1 : -1) * (180 + ((i * 41) % 360))}deg`,
+            }}
+          />
+        )
+      })}
+    </div>
   )
 }
