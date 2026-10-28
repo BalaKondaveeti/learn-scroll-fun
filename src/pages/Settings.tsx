@@ -5,7 +5,7 @@ import { useAuth, useUserId } from '../lib/authContext'
 import { vivid } from '../lib/color'
 import { getChapters, getProgress, resetAllProgress, resetChapterProgress } from '../lib/data'
 import { getHomeLayout, getScrollDirection, saveHomeLayout, saveScrollDirection, type HomeLayout, type ScrollDirection } from '../lib/prefs'
-import { forgetLastChapter } from '../lib/recent'
+import { forgetVisits } from '../lib/recent'
 import { sb } from '../lib/supabase'
 import { applyTheme, getTheme, type Theme } from '../lib/theme'
 import type { Chapter } from '../lib/types'
@@ -117,10 +117,11 @@ export default function Settings() {
           onConfirm={async () => {
             if (pending.kind === 'all') {
               await resetAllProgress(userId)
-              forgetLastChapter()
+              forgetVisits()
               setNotice('All progress reset.')
             } else {
               await resetChapterProgress(userId, pending.chapter.id)
+              forgetVisits(pending.chapter.id)
               setNotice(`${pending.chapter.title} reset.`)
             }
             reload()

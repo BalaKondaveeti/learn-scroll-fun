@@ -3,22 +3,19 @@ import { Link } from 'react-router-dom'
 import { ErrorNotice, Page, Spinner } from '../components/Bits'
 import { ChevronRight, Gear, GridIcon, ListIcon, Play, Repeat } from '../components/Icons'
 import { vivid } from '../lib/color'
-import { getChapters, getLastActiveChapter, getProgress, getReviewQuestions } from '../lib/data'
+import { getChapterActivity, getChapters, getLastActiveChapter, getProgress, getReviewQuestions } from '../lib/data'
 import { useFromHere } from '../lib/nav'
 import { getHomeLayout, saveHomeLayout, type HomeLayout } from '../lib/prefs'
-import { getLocalLastChapter } from '../lib/recent'
+import { getLocalVisits } from '../lib/recent'
+import { ChapterRow } from '../components/ChapterRow'
+import { byLastTouched, isChapterDone, mergeTouched } from '../lib/progress'
 import type { Chapter, ProgressNode } from '../lib/types'
 import { useAsync } from '../lib/useAsync'
 
-// The chapter used most recently goes first (and gets the big tile); the rest keep their order.
-function orderChapters(chapters: Chapter[], lastId: string | null) {
-  const last = lastId ? chapters.find((c) => c.id === lastId) : undefined
-  return last ? [last, ...chapters.filter((c) => c !== last)] : chapters
-}
 
 export default function Home() {
   const { data, error, loading, reload } = useAsync(
-    () => Promise.all([getChapters(), getProgress(), getReviewQuestions(50), getLastActiveChapter().catch(() => null)]),
+    () => Promise.all([getChapters(), getProgress(), getReviewQuestions(50), getLastActiveChapter().catch(() => null), getChapterActivity().catch(() => new Map<string, number>())]),
     [],
   )
 
@@ -28,10 +25,14 @@ export default function Home() {
     saveHomeLayout(l)
     setLayout(l)
   }
-  const [chapters, progress, review, serverLast] = data ?? [[], new Map(), [], null]
-  const localLast = getLocalLastChapter()
-  const last = [serverLast, localLast].filter((x) => x && chapters.some((c) => c.id === x.chapterId)).sort((a, b) => b!.at - a!.at)[0]
-  const ordered = orderChapters(chapters, last?.chapterId ?? null)
+  const [chapters, progress, review, serverLast, serverTouched] = data ?? [[], new Map(), [], null, new Map<string, number>()]
+  // Finished chapters move to the Completed list; Home only shows what's left to learn.
+  const done = chapters.filter((c) => isChapterDone(progress.get(c.id)))
+  const active = chapters.filter((c) => !isChapterDone(progress.get(c.id)))
+  // Most recently touched first: the top one gets the big tile, the rest follow in the same order.
+  const touched = mergeTouched(serverTouched, getLocalVisits())
+  const ordered = byLastTouched(active, touched)
+  const last = ordered.length && touched.has(ordered[0].id) ? { chapterId: ordered[0].id } : undefined
   // Resume the server-side last part if it belongs to the chapter on top (even if the chapter was opened more recently).
   const resumePart = serverLast && serverLast.chapterId === last?.chapterId ? serverLast.part : undefined
   const resume = resumePart && !progress.get(resumePart.id)?.completed ? resumePart : undefined
@@ -74,6 +75,12 @@ export default function Home() {
 
           {chapters.length === 0 ? (
             <p className="py-10 text-[var(--muted)]">No chapters yet. Run supabase/content/_all.sql in the Supabase SQL editor to add the starter content.</p>
+          ) : ordered.length === 0 ? (
+            <div className="rounded-[22px] bg-[var(--raised)] px-5 py-8 text-center">
+              <p className="text-5xl" aria-hidden>🏆</p>
+              <p className="mt-3 text-[20px] font-bold tracking-[-0.02em]">You've finished every chapter</p>
+              <p className="mt-1 text-[15px] text-[var(--muted)]">They're all in Completed below. New chapters will show up here.</p>
+            </div>
           ) : (
             <>
             <ChapterTile chapter={ordered[0]} node={progress.get(ordered[0].id)} wide isLast={ordered[0].id === last?.chapterId} from={from} />
@@ -93,6 +100,17 @@ export default function Home() {
               </div>
             )}
             </>
+          )}
+
+          {done.length > 0 && (
+            <Link to="/completed" state={from} className="mt-6 flex items-center gap-3.5 rounded-2xl bg-[var(--raised)] p-3 pr-4 transition active:scale-[0.98]">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[var(--bg)] text-[26px]" aria-hidden>🏆</span>
+              <span className="min-w-0 flex-1 leading-tight">
+                <span className="block text-[17px] font-semibold">Completed</span>
+                <span className="mt-0.5 block text-[14px] text-[var(--muted)]">{done.length} chapter{done.length === 1 ? '' : 's'} finished</span>
+              </span>
+              <span className="text-[var(--muted)]"><ChevronRight size={16} /></span>
+            </Link>
           )}
         </div>
       )}
@@ -121,28 +139,6 @@ function LayoutSwitch({ value, onChange }: { value: HomeLayout; onChange: (l: Ho
   )
 }
 
-function ChapterRow({ chapter: c, node, from }: { chapter: Chapter; node?: ProgressNode; from: { from?: string } }) {
-  const pct = Math.round((node?.progress ?? 0) * 100)
-  return (
-    <Link to={`/c/${c.slug}`} state={from} className="flex items-center gap-3.5 rounded-2xl px-1.5 py-2 transition active:scale-[0.98] active:bg-[var(--raised)]">
-      <span className="relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[16px] text-[28px]" style={{ background: vivid(c.color, c.sort_order, true) }} aria-hidden>
-        {c.emoji}
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="block truncate text-[17px] font-semibold tracking-[-0.01em]">{c.title}</span>
-        <span className="mt-1.5 flex items-center gap-2.5">
-          <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-[var(--raised)]">
-            <span className="block h-full rounded-full transition-[width] duration-700" style={{ width: `${pct}%`, background: c.color }} />
-          </span>
-          <span className="shrink-0 text-[13px] font-medium text-[var(--muted)] tabular-nums">
-            {pct > 0 ? `${pct}%` : `${node?.leaf_total ?? 0} parts`}
-          </span>
-        </span>
-      </span>
-      <span className="text-[var(--muted)]"><ChevronRight size={16} /></span>
-    </Link>
-  )
-}
 
 function ChapterTile({ chapter: c, node, wide = false, isLast = false, from }: { chapter: Chapter; node?: ProgressNode; wide?: boolean; isLast?: boolean; from: { from?: string } }) {
   const pct = Math.round((node?.progress ?? 0) * 100)

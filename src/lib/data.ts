@@ -129,3 +129,20 @@ export async function resetChapterProgress(userId: string, chapterId: string) {
   }
   unwrap(await sb().from('ls_part_progress').delete().eq('user_id', userId).in('part_id', partIds))
 }
+
+// When each chapter was last touched (latest progress update on any of its parts), across devices.
+export async function getChapterActivity(): Promise<Map<string, number>> {
+  const [rows, parts] = await Promise.all([
+    sb().from('ls_part_progress').select('part_id,updated_at'),
+    sb().from('ls_parts').select('id,chapter_id'),
+  ])
+  const progressRows = unwrap<{ part_id: string; updated_at: string }[]>(rows)
+  const chapterOf = new Map(unwrap<{ id: string; chapter_id: string }[]>(parts).map((p) => [p.id, p.chapter_id]))
+  const out = new Map<string, number>()
+  for (const r of progressRows) {
+    const ch = chapterOf.get(r.part_id)
+    const at = Date.parse(r.updated_at)
+    if (ch && at > (out.get(ch) ?? 0)) out.set(ch, at)
+  }
+  return out
+}

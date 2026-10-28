@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { ErrorNotice, IconLink, Page, Spinner } from '../components/Bits'
 import { Confirm } from '../components/Confirm'
 import { PartTile } from '../components/PartTile'
@@ -7,7 +7,7 @@ import { ProgressRing } from '../components/ProgressRing'
 import { vivid } from '../lib/color'
 import { useUserId } from '../lib/authContext'
 import { getChapter, getParts, getProgress, resetChapterProgress } from '../lib/data'
-import { markChapterVisited } from '../lib/recent'
+import { forgetVisits, markChapterVisited } from '../lib/recent'
 import type { Part } from '../lib/types'
 import { useAsync } from '../lib/useAsync'
 import Reels from './Reels'
@@ -16,6 +16,7 @@ import Reels from './Reels'
 // (a parent part's sub-parts, or a leaf part's cards).
 export default function ChapterView() {
   const { chapterSlug = '', partSlug } = useParams()
+  const cameFrom = (useLocation().state as { from?: string } | null)?.from
   const { data, error, reload } = useAsync(async () => {
     const chapter = await getChapter(chapterSlug)
     const [parts, progress] = await Promise.all([getParts(chapter.id), getProgress()])
@@ -41,7 +42,7 @@ export default function ChapterView() {
   if (partSlug && !current) return <Page><ErrorNotice error={new Error(`No part called "${partSlug}"`)} /></Page>
 
   const parent = current?.parent_part_id ? byId.get(current.parent_part_id) : undefined
-  const backTo = current ? (parent ? partPath(parent) : `/c/${chapter.slug}`) : '/'
+  const backTo = current ? (parent ? partPath(parent) : `/c/${chapter.slug}`) : cameFrom === '/completed' ? '/completed' : '/'
   const children = childrenOf(current?.id ?? null)
 
   if (current && children.length === 0) {
@@ -87,6 +88,7 @@ export default function ChapterView() {
           confirmLabel="Reset chapter"
           onConfirm={async () => {
             await resetChapterProgress(userId, chapter.id)
+            forgetVisits(chapter.id)
             reload()
           }}
           onClose={() => setConfirming(false)}

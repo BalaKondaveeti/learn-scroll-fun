@@ -1,6 +1,7 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider, RequireAuth } from './lib/auth'
 import ChapterView from './pages/ChapterView'
+import Completed from './pages/Completed'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Review from './pages/Review'
@@ -17,6 +18,7 @@ export default function App() {
             <Route path="/c/:chapterSlug" element={<ChapterView />} />
             <Route path="/c/:chapterSlug/p/:partSlug" element={<ChapterView />} />
             <Route path="/review" element={<Review />} />
+            <Route path="/completed" element={<Completed />} />
             <Route path="/settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
